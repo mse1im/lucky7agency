@@ -5,5 +5,39 @@ header {
     display: flex;
     background-color: var(--mainColor);
     align-items: center;
-    height: 77px;
+    height: 200px;
+    justify-content: space-between;
+
+    >.container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    image {
+
+    }
+
+    nav {
+      ul {
+        display: flex;
+        gap: 20px;
+        li {
+          
+        }
+      }
+    }
+
+    .sub-menu {
+      display: flex;
+      gap: 20px;
+
+      a {
+
+      }
+
+      button {
+        
+      }
+    }
   }

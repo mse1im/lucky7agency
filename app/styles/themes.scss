@@ -1,0 +1,9 @@
+@import "./variables";
+
+body.light-theme {
+  --mainColor: #{$light-theme-main-color};
+}
+
+body.dark-theme {
+  --mainColor: #{$dark-theme-main-color};
+}

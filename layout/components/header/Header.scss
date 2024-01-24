@@ -1,0 +1,9 @@
+@import "@/app/styles/variables";
+@import "@/app/styles/themes";
+
+header {
+    display: flex;
+    background-color: var(--mainColor);
+    align-items: center;
+    height: 77px;
+  }

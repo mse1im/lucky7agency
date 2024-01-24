@@ -1,0 +1,13 @@
+@mixin overflow($value, $height) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $value;
+    overflow: hidden;
+    min-height: $height;
+    max-height: $height;
+}
+
+@mixin theme-colors($theme) {
+    background-color: map-get($theme, background);
+    color: map-get($theme, text);
+  }

@@ -1,9 +1,15 @@
 @import "./variables";
 
-body.light-theme {
-  --mainColor: #{$light-theme-main-color};
+body[data-theme=light] {
+  --mainColor: #{$background};
+  --bodyColor: #{$white};
+  --orange: #{$dark-theme-body-main-color};
+  --buttonColor: #{$dark-theme-orange};
 }
 
-body.dark-theme {
-  --mainColor: #{$dark-theme-main-color};
+body[data-theme=dark] {
+  --mainColor: #{$dark-theme-body-main-color};
+  --bodyColor: #{$dark-theme-body-color};
+  --buttonColor: #{$dark-theme-body-main-color};
+  --orange: #{$dark-theme-orange};
 }

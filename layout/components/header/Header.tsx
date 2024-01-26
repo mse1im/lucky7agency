@@ -27,7 +27,7 @@ const Header: React.FC<IHeaderProps> = () => {
         <Nav />
         <div className="sub-menu">
           <a href="/">bize ulaşın</a>
-          <button onClick={toggleTheme}>Tema Değiştir</button>
+          <button onClick={toggleTheme}><i className="ri-arrow-right-up-line"></i> Tema Değiştir</button>
         </div>
       </Container>
     </header>

@@ -6,8 +6,3 @@
     min-height: $height;
     max-height: $height;
 }
-
-@mixin theme-colors($theme) {
-    background-color: map-get($theme, background);
-    color: map-get($theme, text);
-  }

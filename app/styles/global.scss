@@ -1,4 +1,5 @@
 @import "./variables";
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;700;900&display=swap');
 
 * {
     box-sizing: border-box;
@@ -17,6 +18,7 @@ body {
     color: $black300;
     background: $background;
     height: 100vh;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 a {

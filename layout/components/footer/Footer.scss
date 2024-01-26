@@ -1,0 +1,31 @@
+@import "@/app/styles/variables";
+
+footer {
+    background-color: var(--mainColor);
+
+    .subscribe {
+        height: 75px;
+        background-color: var(--orange);
+        display: flex;
+        align-items: center;
+
+        >.container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        a {
+            border-radius: 100px;
+            background-color: var(--buttonColor);
+            padding: 10px 20px;
+        }
+    }
+
+    >.container {
+        grid-gap: 24px;
+        gap: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}

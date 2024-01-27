@@ -124,17 +124,27 @@ header {
       align-items: center;
       justify-content: center;
       border:1px solid var(--orange);
-      gap: 20px;
+      gap: 30px;
 
       i {
         font-size: 23px;
         color: var(--orange);
+        transition: color 0.3s ease;
+        z-index: 1;
+      }
+
+      .sun-active {
+        color: $dark-theme-orange;
+      }
+      
+      .moon-active {
+        color: $dark-theme-body-color;
       }
 
       span {
         border-radius: 100px;
         background-color: var(--orange);
-        width: 50px;
+        width: 60px;
         height: 44px;
         position: absolute;
         transition: left 0.3s ease;
@@ -145,7 +155,7 @@ header {
       }
       
       .toggle-right {
-        left: calc(100% - 49px);
+        left: calc(100% - 59px);
       }
     }
   }

@@ -35,16 +35,25 @@ const Header: React.FC<IHeaderProps> = () => {
             alt="Lucky 7 Agency"
             width={306}
             height={43}
+            priority
             onClick={goToHome}
           />
           <Nav />
           <div className="sub-menu">
             <button onClick={toggleTheme}>
-              <i className="ri-sun-fill"></i>
+              <i
+                className={`ri-sun-fill ${
+                  theme === "light" ? "sun-active" : ""
+                }`}
+              ></i>
               <span
                 className={theme === "light" ? "toggle-left" : "toggle-right"}
               ></span>
-              <i className="ri-moon-fill"></i>
+              <i
+                className={`ri-moon-fill ${
+                  theme === "dark" ? "moon-active" : ""
+                }`}
+              ></i>
             </button>
             <a href="/">
               <i className="ri-customer-service-2-fill"></i> bize ulaşın

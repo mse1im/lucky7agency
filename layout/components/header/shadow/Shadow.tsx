@@ -97,7 +97,7 @@ const Shadow: React.FC = () => {
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="#E6BC31" />
-            <stop offset="1" stop-color="#2D2AD7" />
+            <stop offset="1" stopColor="#2D2AD7" />
           </linearGradient>
         </defs>
       </svg>

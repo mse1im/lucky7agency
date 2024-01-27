@@ -14,6 +14,8 @@ header {
     position: fixed;
     z-index: 9;
     animation: slideDown .5s both;
+    background-color: #1e1f2359;
+    border-bottom: 1px solid red;
   }
 
   &:not(.fixed) {
@@ -109,6 +111,7 @@ header {
 
       i {
         margin-right: .5rem;
+        font-size: 20px;
       }
     }
 
@@ -124,10 +127,10 @@ header {
       align-items: center;
       justify-content: center;
       border:1px solid var(--orange);
-      gap: 30px;
+      gap: 35px;
 
       i {
-        font-size: 23px;
+        font-size: 20px;
         color: var(--orange);
         transition: color 0.3s ease;
         z-index: 1;
@@ -144,7 +147,7 @@ header {
       span {
         border-radius: 100px;
         background-color: var(--orange);
-        width: 60px;
+        width: 55px;
         height: 44px;
         position: absolute;
         transition: left 0.3s ease;
@@ -155,7 +158,7 @@ header {
       }
       
       .toggle-right {
-        left: calc(100% - 59px);
+        left: calc(100% - 54px);
       }
     }
   }

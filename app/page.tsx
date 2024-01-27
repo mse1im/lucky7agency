@@ -14,6 +14,7 @@ import Faq from "@/layout/components/faq/FAQ";
 import Footer from "@/layout/components/footer/Footer";
 import Benefits from "@/layout/components/benefits/Benefits";
 import BecomeAStreamer from "@/layout/components/becomeastreamer/BecomeAStreamer";
+import BackToTop from "@/layout/components/backtotop/BackToTop";
 
 const Homepage = () => {
   const { theme } = useContext(ThemeContext);
@@ -34,6 +35,7 @@ const Homepage = () => {
       <Benefits />
       <Faq />
       <Footer />
+      <BackToTop />
     </body>
   );
 };

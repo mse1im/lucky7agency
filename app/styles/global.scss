@@ -14,18 +14,31 @@ body {
     font-size: 14px;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    scroll-behavior: smooth;
+}
+
 body {
     color: $black300;
-    background: $background;
-    height: 100vh;
+    background: var(--mainColor);
     font-family: 'Titillium Web', sans-serif;
 }
 
 a {
     color: $mainColor;
     text-decoration: none;
+    transition: all .5s ease-in-out;
+
+    &:hover {
+    }
 }
 
 ul {
     list-style-type: none;
+    li {
+        transition: all .5s ease-in-out;
+    }
 }

@@ -2,6 +2,7 @@
 
 footer {
     background-color: var(--mainColor);
+    position: relative;
 
     .subscribe {
         height: 75px;
@@ -15,17 +16,139 @@ footer {
             justify-content: space-between;
         }
 
+        h3 {
+            color: var(--dark);
+        }
+
         a {
             border-radius: 100px;
             background-color: var(--buttonColor);
             padding: 10px 20px;
+            color: var(--white);
         }
     }
 
     >.container {
-        grid-gap: 24px;
-        gap: 24px;
+        gap: 70px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 3fr 1.2fr 1.2fr 1.5fr;
+        margin-top: 60px;
+        padding-bottom: 60px;
+        position: relative;
     }
+
+    .lucky7agency {
+
+        p {
+            margin: 30px 0;
+        }
+
+        .social-media {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-direction: row;
+
+            li {
+                background-color: var(--socialButton);
+                border-radius: 50%;
+                cursor: pointer;
+                width: 40px;
+                height: 40px;
+
+                a {
+                    border-radius: 50%;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    i {
+                        color: #595C6A;
+                        font-size: 16px;
+                    }
+                }
+
+                &:hover {
+                    background-color: $dark-theme-orange;
+
+                    a {
+                        i {
+                            color: $dark-theme-body-main-color;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    ul.content {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 20px;
+
+        h4 {
+            font-size: 20px;
+            color: var(--white);
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 20px;
+        }
+
+        li {
+            a {
+                display: flex;
+                align-items: center;
+                font-size: 15px;
+                color: var(--white);
+
+                i {
+                    margin-right: 1rem;
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+
+    .info-box {
+        border-radius: 15px;
+        background-color: rgba(49, 51, 58, 0.75);
+        backdrop-filter: blur(5px);
+        padding: 20px 30px;
+        position: relative;
+        z-index: 9;
+
+        h5 {
+            font-size: 20px;
+            color: var(--white);
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 20px;
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            li, a {
+                color:var(--white);
+                i {
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+
+    img.comment-img {
+        position: absolute;
+        right: -30px;
+        top: -20px;
+    }
+
 }

@@ -3,9 +3,12 @@ import "./Streamers.scss";
 
 const Streamers: React.FC<IStreamersProps> = () => {
   return (
-    <section className="streamers">
+    <section className="streamers" id="streamers">
       <Container>
-        streamers
+        <div className="title">
+          <span>Lucky 7 Agency</span>
+          <h2>Yayıncılarımız</h2>
+        </div>
       </Container>
     </section>
   );

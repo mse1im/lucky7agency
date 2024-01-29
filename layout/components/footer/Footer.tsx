@@ -1,16 +1,12 @@
 import Container from "../container/Container";
 import darkLogo from "../../../public/footer.png";
-import whiteLogo from "../../../public/footer.png";
-import { useTheme } from "@/layout/context/Theme";
 import comment from "../../../public/comment.png";
 import Image from "next/image";
 import "./Footer.scss";
 
 const Footer: React.FC<IFooterProps> = () => {
-  const { theme } = useTheme();
-  const logo = theme === "light" ? whiteLogo : darkLogo;
   return (
-    <footer>
+    <footer id="callus">
       <div className="subscribe">
         <Container>
           <h3>Yayıncılarımız Arasına Katılmak İster Misiniz?</h3>
@@ -19,7 +15,7 @@ const Footer: React.FC<IFooterProps> = () => {
       </div>
       <Container>
         <div className="lucky7agency">
-          <Image src={logo} alt="Lucky 7 Agency" width={387} height={54} />
+          <Image src={darkLogo} alt="Lucky 7 Agency" width={387} height={54} priority />
           <p>
             Oyuncu ve menajer Temmuz Karikutal tarafından kurulan ve bugüne
             kadar televizyon ve sinema sektöründe oyuncu menajeri olarak hizmet

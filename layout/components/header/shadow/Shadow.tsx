@@ -2,7 +2,7 @@ import "./Shadow.scss";
 
 const Shadow: React.FC = () => {
   return (
-    <>
+    <div className="bg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1049"
@@ -101,7 +101,7 @@ const Shadow: React.FC = () => {
           </linearGradient>
         </defs>
       </svg>
-    </>
+    </div>
   );
 };
 export default Shadow;

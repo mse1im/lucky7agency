@@ -3,7 +3,7 @@ import "./AboutUs.scss";
 
 const AboutUs: React.FC<IAboutUsProps> = () => {
   return (
-    <section className="aboutus">
+    <section className="aboutus" id="aboutus">
       <Container>
         hakkımızda
       </Container>

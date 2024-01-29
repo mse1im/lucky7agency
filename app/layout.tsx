@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./styles/global.scss";
-import { ThemeProvider } from "@/layout/context/Theme";
 
 export const metadata: Metadata = {
   title: "Lucky 7 Agency - TikTok LIVE Ajans Partneri",
@@ -15,9 +14,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <ThemeProvider>
-      <html lang="tr">{children}</html>
-    </ThemeProvider>
-  );
+  return <html lang="tr">{children}</html>;
 }

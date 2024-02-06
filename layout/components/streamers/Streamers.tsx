@@ -97,6 +97,11 @@ const Streamers: React.FC<IStreamersProps> = () => {
           <span>Lucky 7 Agency</span>
           <h2>Yayıncılarımız</h2>
         </div>
+        <div className="getastreamer">
+            <a href="/streamers">
+              <i className="ri-shake-hands-line"></i> Tüm yayıncıları gör
+            </a>
+          </div>
       </Container>
       <div className="slider">
         <div className="slide-track" ref={slideTrackRef}>

@@ -10,24 +10,42 @@
             gap: 50px;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+
+            @media (width >=$md) {
+                flex-direction: row;
+            }
 
             .counter {
                 text-align: center;
+
+                &-value, &-subtitle {
+                    color: $dark-theme-body-main-color;
+                    font-size: 55px;
+                    font-weight: 900;
+                }
+
+                &-subtitle {
+                    font-size: 25px;
+                }
+
             }
 
             li {
                 position: relative;
 
-                &:not(&:last-child) {
-                    padding-right: 3rem;
-                    &::before {
-                        content:'';
-                        position: absolute;
-                        right: 0;
-                        top: 0;
-                        background: black;
-                        width: 1px;
-                        height: 100%;
+                @media (width >=$md) {
+                    &:not(&:last-child) {
+                        padding-right: 3rem;
+                        &::before {
+                            content:'';
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            background: #e1b524;
+                            width: 2px;
+                            height: 100%;
+                        }
                     }
                 }
             }

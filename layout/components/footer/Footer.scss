@@ -174,6 +174,11 @@ footer {
         position: absolute;
         right: -30px;
         top: -20px;
+        display: none;
+        
+        @media (width >=$md) {
+          display: block;
+        }
     }
 
 }

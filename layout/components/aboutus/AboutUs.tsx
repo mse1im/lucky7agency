@@ -1,4 +1,8 @@
 import Container from "../container/Container";
+import comment from "../../../public/image162.png";
+import img1 from "../../../public/image173.png";
+import img2 from "../../../public/image174.png";
+import Image from "next/image";
 import "./AboutUs.scss";
 
 const AboutUs: React.FC<IAboutUsProps> = () => {
@@ -39,6 +43,9 @@ const AboutUs: React.FC<IAboutUsProps> = () => {
             </span>
           </div>
         </div>
+        <Image src={comment} alt="comment" width={120} height={92} className="comment-img" />
+        <Image src={img1} alt="comment" width={222} height={290} className="img1" />
+        <Image src={img2} alt="comment" width={97} height={88} className="img2" />
       </Container>
     </section>
   );

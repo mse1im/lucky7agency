@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Shadow from "./shadow/Shadow";
 
-const Header: React.FC<IHeaderProps> = () => {
+const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useRouter();
   const goToHome = () => {
@@ -35,7 +35,7 @@ const Header: React.FC<IHeaderProps> = () => {
             priority
             onClick={goToHome}
           />
-          <Nav />
+          <Nav menuItems={menuItems || []} />
           <div className="sub-menu">
             <a href="/" className="call-us">
               <i className="ri-customer-service-2-fill"></i> <span>bize ulaşın</span>

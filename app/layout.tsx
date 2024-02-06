@@ -1,5 +1,4 @@
 import "./styles/global.scss";
-import Header from "@/layout/components/header/Header";
 import Footer from "@/layout/components/footer/Footer";
 import BackToTop from "@/layout/components/backtotop/BackToTop";
 import "remixicon/fonts/remixicon.css";
@@ -12,7 +11,6 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body data-theme="dark">
-        <Header />
         {children}
         <Footer />
         <BackToTop />

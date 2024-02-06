@@ -136,4 +136,26 @@
         right: -3%;
         transform: rotate(270deg);
     }
+
+    >.container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .title {
+            margin: 0 auto;
+        }
+
+        .getanoffer {
+            margin-left: 0;
+
+            button {
+                @include button;
+            }
+        }
+
+        @media (width >=$md) {
+            flex-direction: row;
+        }
+    }
 }

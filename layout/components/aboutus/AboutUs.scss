@@ -15,6 +15,7 @@
         position: relative;
         align-items: center;
         text-align: center;
+        z-index: 1;
 
         .badge {
             position: absolute;
@@ -84,6 +85,42 @@
                 font-weight: 400;
                 line-height: 176%;
             }
+        }
+    }
+
+    >.container {
+        position: relative;
+    }
+
+    .comment-img {
+        position: absolute;
+        right: 50px;
+        top: -57px;
+        z-index: 0;
+        display: none;
+
+        
+        @media (width >=$md) {
+          display: block;
+        }
+    }
+
+    .img1 {
+        position: absolute;
+        left: -15px;
+        top: -60px;
+        z-index: 0; 
+    }
+
+    .img2 {
+        position: absolute;
+        right: -24px;
+        bottom: 168px;
+        z-index: 0; 
+        display: none;
+        
+        @media (width >=$md) {
+          display: block;
         }
     }
 }

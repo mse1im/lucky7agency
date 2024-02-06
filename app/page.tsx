@@ -8,6 +8,15 @@ import Services from "@/layout/components/services/Services";
 import Faq from "@/layout/components/faq/FAQ";
 import Benefits from "@/layout/components/benefits/Benefits";
 import Head from 'next/head';
+import Header from "@/layout/components/header/Header";
+
+const menuItems = [
+  { name: "anasayfa", href: "/", displayName: "Anasayfa" },
+  { name: "services", href: "#services", displayName: "Hizmetlerimiz" },
+  { name: "streamers", href: "#streamers", displayName: "Ekibimiz" },
+  { name: "aboutus", href: "#aboutus", displayName: "Hakkımızda" },
+  { name: "callus", href: "#callus", displayName: "İletişim" },
+];
 
 const Homepage = () => {
   return (
@@ -24,6 +33,7 @@ const Homepage = () => {
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <Header menuItems={menuItems} />
       <section className="slider">
         <Container>
           <Slider />

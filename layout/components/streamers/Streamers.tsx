@@ -4,161 +4,41 @@ import Container from "../container/Container";
 import "./Streamers.scss";
 import { useRouter } from "next/navigation";
 
+export const streamers = [
+  {
+    name: "Guban Yılmaz",
+    title: "Yayıncı",
+    path: "/streamer/guban-jies",
+    backgroundImage:
+      "https://lucky7agency.com.tr/wp-content/uploads/2023/09/barisgg-768x768.png",
+    socialMedia: {
+      instagram: { link: "https://github.com/mse1im", iconClass: "ri-instagram-line" },
+      twitter: { link: "#", iconClass: "ri-twitter-line" },
+      tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
+    },
+  },
+  {
+    name: "Mehmet Selim",
+    title: "Yayıncı",
+    path: "/streamer/mehmet-selim",
+    backgroundImage:
+      "https://webdevetc.com/images/tutorials/e_background.jpg",
+    socialMedia: {
+      instagram: { link: "#", iconClass: "ri-instagram-line" },
+      twitter: { link: "#", iconClass: "ri-twitter-line" },
+      tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
+    },
+  },
+];
+
 const Streamers: React.FC<IStreamersProps> = () => {
   const slideTrackRef = useRef<HTMLDivElement>(null);
 
   const router = useRouter();
 
   const handleSlideClick = (path: any) => {
-    router.push(path);
+    router.push( `${path}`);
   };
-
-  const streamers = [
-    {
-      name: "Sergen Kurt",
-      title: "Yayıncı",
-      path: "/sergen-kurt",
-      backgroundImage:
-        "https://lucky7agency.com.tr/wp-content/uploads/2023/09/barisgg-768x768.png",
-      socialMedia: {
-        instagram: { link: "/eben", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Mehmet Selim",
-      title: "Yayıncı",
-      path: "/mehmet-selim",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Sergen Kurt",
-      title: "Yayıncı",
-      path: "/sergen-kurt",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Mehmet Selim",
-      title: "Yayıncı",
-      path: "/mehmet-selim",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Sergen Kurt",
-      title: "Yayıncı",
-      path: "/sergen-kurt",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Mehmet Selim",
-      title: "Yayıncı",
-      path: "/mehmet-selim",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Sergen Kurt",
-      title: "Yayıncı",
-      path: "/sergen-kurt",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Mehmet Selim",
-      title: "Yayıncı",
-      path: "/mehmet-selim",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Sergen Kurt",
-      title: "Yayıncı",
-      path: "/sergen-kurt",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Mehmet Selim",
-      title: "Yayıncı",
-      path: "/mehmet-selim",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Sergen Kurt",
-      title: "Yayıncı",
-      path: "/sergen-kurt",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-    {
-      name: "Mehmet Selim",
-      title: "Yayıncı",
-      path: "/mehmet-selim",
-      backgroundImage:
-        "https://webdevetc.com/images/tutorials/e_background.jpg",
-      socialMedia: {
-        instagram: { link: "#", iconClass: "ri-instagram-line" },
-        twitter: { link: "#", iconClass: "ri-twitter-line" },
-        tiktok: { link: "#", iconClass: "ri-tiktok-fill" },
-      },
-    },
-  ];
 
   useEffect(() => {
     let animation: Animation;

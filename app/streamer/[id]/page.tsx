@@ -1,15 +1,18 @@
+"use client";
+import { usePathname } from "next/navigation";
+import React from "react";
+import { streamers } from "@/layout/components/streamers/Streamers";
 import Container from "@/layout/components/container/Container";
-import Sponsors from "@/layout/components/sponsors/Sponsors";
-import Slider from "@/layout/components/slider/Slider";
-import Streamers from "@/layout/components/streamers/Streamers";
-import Form from "@/layout/components/form/Form";
-import AboutUs from "@/layout/components/aboutus/AboutUs";
-import Services from "@/layout/components/services/Services";
-import Faq from "@/layout/components/faq/FAQ";
-import Benefits from "@/layout/components/benefits/Benefits";
-import Head from 'next/head';
+import Head from "next/head";
 
-const Homepage = () => {
+export default function Streamer() {
+  const pathname = usePathname();
+  const streamer = streamers.find((streamer) => {
+    return streamer.path.includes(pathname);
+  });
+
+  console.log(streamer);
+
   return (
     <>
       <Head>
@@ -24,19 +27,7 @@ const Homepage = () => {
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <section className="slider">
-        <Container>
-          <Slider />
-        </Container>
-      </section>
-      <Sponsors />
-      <Streamers />
-      <Form />
-      <AboutUs />
-      <Services />
-      <Benefits />
-      <Faq />
+      <Container>Streamer detail for</Container>
     </>
   );
-};
-export default Homepage;
+}

@@ -1,0 +1,45 @@
+@import "./variables";
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000000ba;
+    z-index: 9;
+    backdrop-filter: blur(10px);
+
+    &-content {
+        background-color: $dark-theme-body-color;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90%;
+        padding: 25px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        @include animatetop;
+        @include modal-position;
+
+        @media (width >=$md) {
+            width: 60%;
+          }
+
+        .close {
+            position: absolute;
+            right: -20px;
+            top: -25px;
+            outline: none;
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 10px;
+
+            i {
+                font-size: 30px;
+                color: $white;
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+@import "@/app/styles/variables";
+
+.benefits {
+    background-color: #E6BC31;
+
+    &-wrapper {
+        padding: 40px 0;
+        ul {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            justify-content: center;
+
+            .counter {
+                text-align: center;
+            }
+
+            li {
+                position: relative;
+
+                &:not(&:last-child) {
+                    padding-right: 3rem;
+                    &::before {
+                        content:'';
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        background: black;
+                        width: 1px;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

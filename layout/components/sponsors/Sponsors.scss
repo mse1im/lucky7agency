@@ -2,6 +2,55 @@
 
 .sponsors {
     background-color: var(--bodyColor);
-    height: 250px;
     z-index: 9;
+
+    .swiper {
+        padding: 40px;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px;
+        border-radius: 15px;
+        border: 1px solid $dark-theme-body-color;
+        background: $dark-theme-body-color ;
+
+        img {
+            filter: brightness(0.3);
+        }
+
+        &:hover {
+            background: #27292E;
+            border: 1px solid #373940;
+
+            img {
+                filter: brightness(0.8);
+            }
+        }
+    }
+
+    >.container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .title {
+            margin: 0 auto;
+        }
+
+        .getanoffer {
+            margin-left: 0;
+
+            button {
+                @include button;
+            }
+        }
+
+        @media (width >=$md) {
+            flex-direction: row;
+        }
+    }
 }

@@ -9,7 +9,7 @@ import AboutUs from "@/layout/components/aboutus/AboutUs";
 import Services from "@/layout/components/services/Services";
 import Faq from "@/layout/components/faq/FAQ";
 import Footer from "@/layout/components/footer/Footer";
-import BecomeAStreamer from "@/layout/components/becomeastreamer/BecomeAStreamer";
+import Benefits from "@/layout/components/benefits/Benefits";
 import BackToTop from "@/layout/components/backtotop/BackToTop";
 
 const Homepage = () => {
@@ -25,8 +25,8 @@ const Homepage = () => {
       <Streamers />
       <Form />
       <AboutUs />
-      <BecomeAStreamer />
       <Services />
+      <Benefits />
       <Faq />
       <Footer />
       <BackToTop />

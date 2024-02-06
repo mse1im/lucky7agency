@@ -8,6 +8,8 @@ header {
   justify-content: space-between;
   transition: transform .5s ease;
   backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 9;
 
   img {
     cursor: pointer;
@@ -59,7 +61,7 @@ header {
 
   nav {
     ul.desktop {
-      display: flex;
+      display: none;
       gap: 50px;
 
       li {
@@ -96,6 +98,10 @@ header {
             background-color: $dark-theme-orange;
           }
         }
+      }
+
+      @media (width >=$md) {
+        display: flex;
       }
     }
 
@@ -164,6 +170,10 @@ header {
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @media (width >=$md) {
+        display: none;
+      }
 
       &-menu {
         display: none;
@@ -262,18 +272,8 @@ header {
     order: 3;
 
     a.call-us {
-      background-color: var(--orange);
-      padding: 9px 18px;
-      border-radius: 100px;
+      @include button;
       display: none;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      color: var(--dark);
-      font-size: 17px;
-      font-style: normal;
-      font-weight: 700;
-      text-transform: uppercase;
 
       i {
         margin-right: .5rem;

@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./common";
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;700;900&display=swap');
 
 * {
@@ -25,6 +26,7 @@ body {
     color: $black300;
     background: var(--mainColor);
     font-family: 'Titillium Web', sans-serif;
+    position: relative;
 }
 
 a {
@@ -41,6 +43,10 @@ ul {
     li {
         transition: all .5s ease-in-out;
     }
+}
+
+button {
+    font-family: "Titillium Web", sans-serif;
 }
 
 .title {

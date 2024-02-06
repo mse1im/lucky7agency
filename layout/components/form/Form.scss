@@ -2,5 +2,80 @@
 
 .form {
     background-color: var(--bodyColor);
-    height: 250px;
+    padding-bottom: 50px;
+    position: relative;
+
+    &-wrapper {
+        padding: 50px 0;
+        display: flex;
+        gap: 50px;
+        flex-direction: column;
+
+        @media (width >=$md) {
+            flex-direction: row;
+        }
+
+        &-infobox {
+            flex: 1;
+            border-radius: 15px;
+            border: 1px solid #373940;
+            background: #27292E;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+
+            h2 {
+                color: $orange;
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 900;
+                line-height: 36px;
+                padding-top: 20px;
+            }
+
+            p {
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 28px;
+                color: $white;
+                padding: 20px 0;
+            }
+
+            span {
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 28px;
+                color: $white;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0 20px 20px;
+
+                li {}
+            }
+
+            button {
+                padding: 20px 0;
+                @include button;
+                text-transform: capitalize;
+                align-self: center;
+            }
+        }
+
+        &-action {
+            flex: 2;
+        }
+    }
+
+    svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }

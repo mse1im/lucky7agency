@@ -1,5 +1,5 @@
 "use client";
-import darkLogo from "../../../public/L7AgencyBeyaz3.png";
+import darkLogo from "@/public/L7AgencyBeyaz3.png";
 import { useRouter } from "next/navigation";
 import Container from "../container/Container";
 import "./Header.scss";
@@ -37,21 +37,6 @@ const Header: React.FC<IHeaderProps> = () => {
           />
           <Nav />
           <div className="sub-menu">
-            {/* <button onClick={toggleTheme}>
-              <i
-                className={`ri-sun-fill ${
-                  theme === "light" ? "sun-active" : ""
-                }`}
-              ></i>
-              <span
-                className={theme === "light" ? "toggle-left" : "toggle-right"}
-              ></span>
-              <i
-                className={`ri-moon-fill ${
-                  theme === "dark" ? "moon-active" : ""
-                }`}
-              ></i>
-            </button> */}
             <a href="/" className="call-us">
               <i className="ri-customer-service-2-fill"></i> <span>bize ulaşın</span>
             </a>

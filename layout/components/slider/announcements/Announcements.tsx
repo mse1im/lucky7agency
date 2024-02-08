@@ -13,7 +13,10 @@ const Announcements: React.FC<ISliderProps> = () => {
     <Swiper
       cssMode={true}
       navigation={true}
-      pagination={true}
+      pagination={{
+        clickable: true,
+        type: "fraction",
+      }}
       mousewheel={true}
       keyboard={true}
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}

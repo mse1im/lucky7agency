@@ -1,0 +1,21 @@
+@import "@/app/styles/variables";
+
+.back-to-top {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: var(--orange);
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+        font-size: 20px;
+        color: var(--dark);
+    }
+}

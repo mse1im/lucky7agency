@@ -1,0 +1,72 @@
+@import "@/app/styles/variables";
+
+.services {
+    background-color: var(--bodyColor);
+    position: relative;
+
+    &-wrapper {
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+        display: grid;
+        padding-top: 50px;
+        padding-bottom: 100px;
+
+        @media (width >=$md) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .box {
+            border-radius: 15px;
+            border: 1px solid #373940;
+            background: #27292E;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+
+            .badge {
+                align-self: flex-end;
+                border-radius: 100px;
+                border: 0px solid #FFF;
+                background: #1E1F23;
+                padding: 10px 20px;
+
+                i {}
+
+                span {
+                    color: #FFF;
+                    font-size: 17px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 151%;
+                }
+            }
+
+            .info {
+                h3 {
+                    color: #FFF;
+                    font-size: 25px;
+                    font-style: normal;
+                    font-weight: 900;
+                    line-height: normal;
+                    padding-top: 10px;
+                }
+
+                p {
+                    color: #A1A5AF;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 180%;
+                    padding-bottom:20px;
+                }
+            }
+        }
+    }
+
+    svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

@@ -1,0 +1,31 @@
+@import "@/app/styles/variables";
+
+.container {
+    --x: 1.5rem;
+    --y: 0;
+    width: 100%;
+    padding-right: calc(var(--x) * 0.5);
+    padding-left: calc(var(--x) * 0.5);
+    margin-right: auto;
+    margin-left: auto;
+  
+    @media (width >= $s) {
+      max-width: 540px;
+    }
+  
+    @media (width >= $sm) {
+      max-width: 720px;
+    }
+  
+    @media (width >= $md) {
+      max-width: 960px;
+    }
+  
+    @media (width >= $lg) {
+      max-width: 1340px;
+    }
+  
+    @media (width >= $xl) {
+      max-width: 1520px;
+    }
+}

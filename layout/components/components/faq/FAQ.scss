@@ -1,0 +1,78 @@
+@import "@/app/styles/variables";
+
+.faq {
+    background-color: var(--bodyColor);
+    padding: 50px 0 100px 0;
+
+    &-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    &-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-question {
+        cursor: pointer;
+        border-radius: 10px;
+        border: 1px solid #45474F;
+        background: #2E313C;
+        padding: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        color: $white;
+        position: relative;
+        line-height: 22px;
+
+        i {
+            font-size: 34px;
+            color: #63656D;
+        }
+
+        &.active {
+            border-radius: 10px;
+            background: #E6BC31;
+            box-shadow: 0px 5px 14px 0px rgba(0, 0, 0, 0.08);
+            color: #222327;
+
+            i {
+                color: #222327;
+            }
+
+            &::before {
+                background:#222327;
+            }
+        }
+
+        &::before {
+            content: '';
+            border-radius: 0px 25px 25px 0px;
+            background: #63656D;
+            height: 30px;
+            width: 6px;
+            position: absolute;
+            left: -1px;
+        }
+    }
+
+    &-answer {
+        margin: 10px 0;
+        border-radius: 10px;
+        background: #2E313C;
+        box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.08);
+        padding: 18px;
+        cursor: default;
+        color: #848899;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 26px;
+    }
+}

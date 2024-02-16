@@ -36,7 +36,21 @@ const Slider: React.FC<ISliderProps> = () => {
         navigation={true}
         pagination={{
           clickable: true,
-          type: "fraction"
+          type: "custom",
+          renderCustom: (swiper, current, total) => {
+            return `
+              <div class="swiper-pagination-current">${current
+                .toString()
+                .padStart(2, "0")}
+              <div class="swiper-pagination-current-bar"></div>
+              </div>
+              <div class="swiper-pagination-total">
+              <div class="swiper-pagination-total-bar"></div>
+              ${total
+                .toString()
+                .padStart(2, "0")}
+              </div>`;
+          },
         }}
         mousewheel={true}
         keyboard={true}

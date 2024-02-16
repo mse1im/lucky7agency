@@ -1,35 +1,138 @@
 @import "@/app/styles/variables";
 
-.streamers {
+.top-streamers {
     background-color: var(--mainColor);
     position: relative;
 
     .slider {
-        overflow: hidden;
+        margin-top: 60px;
         z-index: 1;
         position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+
+        @media (width >=$lg) {
+            flex-direction: row;
+        }
+
+
 
         .slide-track {
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
-            gap: 100px;
+            gap: 50px;
+            justify-content: center;
+
+            &.slide-track-second {
+                margin-top: 200px;
+            }
+
+            @media (width >=$lg) {
+                &.slide-track-second {
+                    margin-top: 0;
+                }
+            }
         }
 
         .slide {
-            width: 340px;
-            min-width: 340px;
             cursor: pointer;
+            width: 200px;
+            min-width: 200px;
             display: flex;
             flex-direction: column;
-            height: 340px;
+            height: 200px;
             border-radius: 15px;
             opacity: 1;
-            padding: 10px 20px 40px 20px;
+            padding: 10px 20px 20px 20px;
             position: relative;
             justify-content: space-between;
             transition: all .5s ease-in-out;
             background-size: contain;
+
+            &::before {
+                width: 115%;
+                height: 115%;
+                position: absolute;
+                left: -17px;
+                top: -19px;
+                border-radius: 15px;
+                border: 1px solid $grayscale;
+                content:'';
+            }
+
+            &.first {
+                &::before {
+                    border-color: $orange;
+                }
+
+                .trophy {
+                    top: -62px;
+                    font-size: 120px;
+
+                    span {
+                        color: $dark-theme-body-main-color;
+                        top: 78px;
+                        font-size: 65px;
+                    }
+                }
+            }
+
+            &.second {
+                &::before {
+                    border-color: #f87f07;
+                }
+
+                .trophy {
+                    i {
+                        color:#f87f07;
+                    }
+                    span {
+                        color:#f87f07;
+                    }
+                }
+            }
+
+            &.third {
+                &::before {
+                    border-color: #c0c0c0;
+                }
+
+                .trophy {
+                    i {
+                        color:#c0c0c0;
+                    }
+                    span {
+                        color:#c0c0c0;
+                    }
+                }
+            }
+
+            .trophy {
+                @include modal-position;
+                top:-47px;
+                z-index: 999;
+                font-size: 80px;
+
+                span {
+                    @include modal-position;
+                    top: 55px;
+                    z-index: 99999;
+                    color: $grayscale;
+                    font-family: 'Titillium Web', sans-serif;
+                    font-weight: 900;
+                    font-size: 50px;
+                }
+    
+                i.ri-trophy-fill {
+                    color: $orange;
+                }
+    
+                i {
+                    color:$grayscale;
+                }
+            }
 
             &::after {
                 content:'';
@@ -106,14 +209,13 @@
                 h2,
                 h3 {
                     color: $orange;
-                    font-size: 35px;
+                    font-size: 22px;
                     font-style: normal;
                     font-weight: 900;
-                    line-height: 36px;
                 }
 
                 h3 {
-                    font-size: 20px;
+                    font-size: 15px;
                     font-weight: 400;
                     color:$white;
                 }
@@ -126,36 +228,6 @@
                     }
                 }
             }
-        }
-    }
-
-    svg {
-        position: absolute;
-        top: -4%;
-        z-index: 0;
-        right: -3%;
-        transform: rotate(270deg);
-    }
-
-    >.container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
-        .title {
-            margin: 0 auto;
-        }
-
-        .getastreamer {
-            margin-left: 0;
-            z-index: 2;
-            a {
-                @include button;
-            }
-        }
-
-        @media (width >=$md) {
-            flex-direction: row;
         }
     }
 }

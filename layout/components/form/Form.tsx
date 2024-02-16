@@ -3,24 +3,75 @@ import Container from "../container/Container";
 import "./Form.scss";
 import Image from "next/image";
 import formImage from "@/public/form.png";
-import emailjs from "emailjs-com";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { cities } from "./cities";
+import { useState } from "react";
 
-const Form: React.FC<IFormProps> = () => {
-  const sendEmail = (e: any) => {
-    e.preventDefault();
+const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+  birthDate: null,
+  tiktok: "",
+  city: "",
+  hearus: "",
+  gender: "",
+};
 
-    emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_USER_ID")
-      .then(
-        (result) => {
-          alert("Mesaj başarıyla gönderildi!");
-        },
-        (error) => {
-          alert("Mesaj gönderilirken bir hata oluştu.");
-        }
-      );
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required("İsim & Soyisim eksik veya hatalı"),
+  email: Yup.string()
+    .email("Geçersiz e-posta adresi")
+    .required("E-posta eksik veya hatalı"),
+  phone: Yup.string()
+    .matches(/^\d{10}$/, "Geçerli bir telefon numarası girin")
+    .required("Telefon numarası zorunlu"),
+  birthDate: Yup.date().required("Doğum tarihi zorunlu").nullable(),
+  tiktok: Yup.string().required("TikTok kullanıcı adı zorunlu"),
+  city: Yup.string().required("Şehir seçimi zorunlu"),
+  gender: Yup.string().required("Cinsiyet seçimi zorunlu"),
+});
+
+function PhoneInput({ value, onChange }: IFormProps) {
+  const [inputValue, setInputValue] = useState(value);
+
+  const handleChange = (e: any) => {
+    let val = e.target.value;
+
+    val = val.replace(/[^\d]/g, "");
+
+    if (val.length <= 11) {
+      setInputValue(val);
+      onChange(val);
+    }
   };
 
+  const formatPhone = (val: any) => {
+    if (!val) return "";
+
+    const match = val.match(/^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/);
+
+    if (match) {
+      return `${match[1]}(${match[2]}) ${match[3]} ${match[4]} ${match[5]}`;
+    }
+
+    return val;
+  };
+
+  return (
+    <input
+      type="tel"
+      value={formatPhone(inputValue)}
+      onChange={handleChange}
+      placeholder="Telefon Numaranız"
+    />
+  );
+}
+
+const FormArea: React.FC<IFormProps> = () => {
   return (
     <section className="form" id="form">
       <Container>
@@ -28,61 +79,186 @@ const Form: React.FC<IFormProps> = () => {
           <span>Lucky 7 Agency</span>
           <h2>Yayıncı Başvurusu Yapın</h2>
         </div>
-        <form onSubmit={sendEmail}>
-          <div className="form-wrapper">
-            <div className="form-wrapper-infobox">
-              <Image
-                src={formImage}
-                alt="Başvuru Yap, Yayıncı Ol"
-                width={122}
-                height={122}
-                priority
-              />
-              <h2>Sizde Yayıncı Olun</h2>
-              <p>
-                Siz de TikTok yayıncısıysanız ya da yayıncı olmak istiyorsanız
-                başvuru yapabilirsiniz.
-              </p>
-              <span>Başvuru Şartlarımız:</span>
-              <ul>
-                <li>Aylık 7 gün / 15 saat üzeri yayın açmak</li>
-                <li>Aktif geçerli gün olması için minimum 60 dk yayın açmak</li>
-                <li>
-                  Hesabınızın 1K takipçi üzeri ve 200K takipçinin altında olması
-                </li>
-                <li>
-                  Herhangi bir ay içerisinde 1500$ üzeri gelirinizin olmaması
-                </li>
-              </ul>
-              <button>Formu Doldur, Başvuru Yap!</button>
-            </div>
-            <div className="form-wrapper-action">
-              <div className="form-wrapper-action-l">
-                <input
-                  type="text"
-                  name="user_name"
-                  placeholder="İsim Soyisim"
-                  required
-                />
-                <input
-                  type="email"
-                  name="user_email"
-                  placeholder="E-posta Adresi"
-                  required
-                />
-                <textarea
-                  name="message"
-                  placeholder="Mesajınız"
-                  required
-                ></textarea>
-              </div>
-              <div className="form-wrapper-action-r">
-                telefon numarası ve fotoğraf yükleme
-              </div>
-              <button type="submit">gönder</button>
-            </div>
+        <div className="form-wrapper">
+          <div className="form-wrapper-infobox">
+            <Image
+              src={formImage}
+              alt="Başvuru Yap, Yayıncı Ol"
+              width={122}
+              height={122}
+              priority
+            />
+            <h2>Sizde Yayıncı Olun</h2>
+            <p>
+              Siz de TikTok yayıncısıysanız ya da yayıncı olmak istiyorsanız
+              başvuru yapabilirsiniz.
+            </p>
+            <span>Başvuru Şartlarımız:</span>
+            <ul>
+              <li>Aylık 7 gün / 15 saat üzeri yayın açmak</li>
+              <li>Aktif geçerli gün olması için minimum 60 dk yayın açmak</li>
+              <li>
+                Hesabınızın 1K takipçi üzeri ve 200K takipçinin altında olması
+              </li>
+              <li>
+                Herhangi bir ay içerisinde 1500$ üzeri gelirinizin olmaması
+              </li>
+            </ul>
+            <button>Formu Doldur, Başvuru Yap!</button>
           </div>
-        </form>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={(values) => {
+              console.log(values);
+            }}
+          >
+            {({ setFieldValue, values }) => (
+              <Form>
+                <div className="form-wrapper-action">
+                  <label htmlFor="name">
+                    <i className="ri-user-line"></i>
+                    <Field
+                      type="text"
+                      name="name"
+                      placeholder="İsim & Soyisim"
+                    />
+
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="error"
+                    />
+                  </label>
+
+                  <label htmlFor="email">
+                    <i className="ri-mail-line"></i>
+                    <Field
+                      type="email"
+                      name="email"
+                      placeholder="E-posta Adresiniz"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="error"
+                    />
+                  </label>
+
+                  <label htmlFor="phone">
+                    <i className="ri-smartphone-line"></i>
+                    <PhoneInput
+                      value={values.phone}
+                      onChange={(val: any) => setFieldValue("phone", val)}
+                    />
+                    <ErrorMessage
+                      name="phone"
+                      component="div"
+                      className="error"
+                    />
+                  </label>
+
+                  <label htmlFor="birthDate">
+                    <i className="ri-cake-2-line"></i>
+                    <DatePicker
+                      name="birthDate"
+                      selected={
+                        values.birthDate ? new Date(values.birthDate) : null
+                      }
+                      onChange={(date) => setFieldValue("birthDate", date)}
+                      dateFormat="dd/MM/yyyy"
+                      placeholderText="Doğum Tarihiniz"
+                    />
+                    <ErrorMessage
+                      name="birthDate"
+                      component="div"
+                      className="error"
+                    />
+                  </label>
+
+                  <label htmlFor="tiktok">
+                    <i className="ri-tiktok-fill"></i>
+                    <Field
+                      type="text"
+                      name="tiktok"
+                      placeholder="TikTok Kullanıcı Adınız"
+                    />
+                    <ErrorMessage
+                      name="tiktok"
+                      component="div"
+                      className="error"
+                    />
+                  </label>
+
+                  <label htmlFor="city">
+                    <i className="ri-building-2-line"></i>
+                    <Field as="select" name="city">
+                      <option value="">Şehir Seçiniz</option>
+                      {cities.map((city, index) => (
+                        <option key={index} value={city}>
+                          {city}
+                        </option>
+                      ))}
+                    </Field>
+                    <ErrorMessage
+                      name="city"
+                      component="div"
+                      className="error"
+                    />
+                  </label>
+
+                  <label htmlFor="hearus">
+                    <i className="ri-news-line"></i>
+                    <Field as="select" name="hearus">
+                      <option value="">Bizi Nereden Duydunuz?</option>
+                      <option value="twitter">Twitter</option>
+                      <option value="facebook">Facebook</option>
+                      <option value="linkedin">LinkedIn</option>
+                    </Field>
+                    <ErrorMessage
+                      name="hearus"
+                      component="div"
+                      className="error"
+                    />
+                  </label>
+
+                  <label htmlFor="gender">
+                    <i className="ri-women-line"></i>
+                    <Field as="select" name="gender">
+                      <option value="">Cinsiyet Seçiniz</option>
+                      <option value="male">Erkek</option>
+                      <option value="female">Kadın</option>
+                    </Field>
+                    <ErrorMessage
+                      name="gender"
+                      component="div"
+                      className="error"
+                    />
+                  </label>
+                </div>
+
+                <label htmlFor="file">
+                  <i className="ri-image-line"></i>
+                  <input
+                    id="file"
+                    name="file"
+                    type="file"
+                    onChange={(event) => {
+                      setFieldValue(
+                        "file",
+                        event.currentTarget.files &&
+                          event.currentTarget.files[0]
+                      );
+                    }}
+                  />
+                  <ErrorMessage name="file" component="div" className="error" />
+                </label>
+
+                <button type="submit">Yayıncı Başvurumu Gönder!</button>
+              </Form>
+            )}
+          </Formik>
+        </div>
       </Container>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -135,4 +311,4 @@ const Form: React.FC<IFormProps> = () => {
     </section>
   );
 };
-export default Form;
+export default FormArea;

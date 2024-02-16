@@ -68,8 +68,77 @@
             }
         }
 
-        &-action {
+        form {
             flex: 2;
+            display: flex;
+            flex-direction: column;
+
+            .form-wrapper-action {
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 50px;
+                grid-row: 20px;
+                display: grid;
+                margin-bottom: 50px;
+            }
+
+            label {
+                position: relative;
+                i {
+                    position: absolute;
+                    left: 20px;
+                    top: 20px;
+                    z-index: 9;
+                    font-size: 18px;
+                    color:#5D616A;
+                }
+                input, select {
+                    width: 100%;
+                    border-radius: 100px;
+                    border:1px solid #373940;
+                    background-color: #27292E;
+                    padding: 15px 70px;
+                    color: $white;
+                    font-family: 'Titillium Web', sans-serif;
+                    outline: none;
+                    font-size: 16px;
+                    font-weight: 400;
+
+                    &::placeholder {
+                        font-size: 18px;
+                        font-weight: 400;
+                        color:#5D616A;
+                    }
+                }
+
+                &::after {
+                    content:'';
+                    width: 1px;
+                    height: 100%;
+                    position: absolute;
+                    left: 55px;
+                    top: 0;
+                    background-color: #373940;
+                }
+            }
+
+            button {
+                margin-top: 50px;
+                border-radius: 100px;
+                border: 1px solid #373940;
+                background: $orange;
+                padding: 10px;
+                font-size: 18px;
+                color: #27292E;
+                font-weight: 700;
+                cursor: pointer;
+            }
+
+            .error {
+                position: absolute;
+                left: 0;
+                bottom: -35px;
+                color: red;
+            }
         }
     }
 

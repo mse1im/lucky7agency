@@ -1,0 +1,113 @@
+@import "@/app/styles/variables";
+
+.streamer {
+    padding:50px 0 100px 0;
+
+    .goback {
+        padding: 20px 0;
+        display: flex;
+        justify-content: flex-end;
+
+        a {
+            @include button;
+        }
+    }
+
+    &-wrapper {
+        display: flex;
+
+        .img-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-right: 2rem;
+
+            .img {
+                width: 340px;
+                min-width: 340px;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                height: 340px;
+                border-radius: 15px;
+                opacity: 1;
+                padding: 10px 20px 40px 20px;
+                position: relative;
+                justify-content: space-between;
+                transition: all .5s ease-in-out;
+                background-size: contain;
+            }
+
+            .social-media {
+                display: flex;
+                justify-content: space-between;
+                height: 40px;
+                width: 140px;
+                border-radius: 100px;
+                background-color: #E6BC31;
+                z-index: 9999;
+                transition: opacity, background-color, .5s ease-in-out;
+    
+                ul {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    padding: 0 1rem;
+    
+                    li {
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        a {
+                            i {
+                                color: $white;
+                                font-size: 20px;
+                                transition: color .5s ease-in-out;
+                            }
+                        }
+    
+                        &:hover {
+                            a {
+                                i {
+                                    color: white;
+                                }
+                            }
+                            background-color: black;
+                        }
+                    }
+                }
+            }
+        }
+
+        .streamer-detail {
+            display: flex;
+
+            .info {
+                p {
+                    padding-top: 20px;
+                }
+                z-index: 9;
+                h1,
+                h2 {
+                    color: $orange;
+                    font-size: 55px;
+                    font-style: normal;
+                    font-weight: 900;
+                    line-height: 56px;
+                }
+    
+                h2 {
+                    font-size: 30px;
+                    font-weight: 400;
+                    color:$white;
+                }
+            }
+        }
+        
+
+    }
+}

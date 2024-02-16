@@ -9,6 +9,8 @@ import Faq from "@/layout/components/faq/FAQ";
 import Benefits from "@/layout/components/benefits/Benefits";
 import Head from 'next/head';
 import Header from "@/layout/components/header/Header";
+import TopStreamers from "@/layout/components/topstreamers/TopStreamers";
+import OtherStreamers from "@/layout/components/otherstreamers/OtherStreamers";
 
 const menuItems = [
   { name: "anasayfa", href: "/", displayName: "Anasayfa" },
@@ -42,6 +44,8 @@ const Homepage = () => {
       <Sponsors />
       <Streamers />
       <Form />
+      <TopStreamers />
+      <OtherStreamers />
       <AboutUs />
       <Services />
       <Benefits />

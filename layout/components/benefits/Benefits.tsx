@@ -27,6 +27,12 @@ const Benefits: React.FC<IBenefitsProps> = () => {
               duration={5000}
               subtitle="Yayıncılarımızın Kazancı"
             />
+            <Counter
+              start={50}
+              end={350}
+              duration={5000}
+              subtitle="X"
+            />
           </ul>
         </div>
       </Container>

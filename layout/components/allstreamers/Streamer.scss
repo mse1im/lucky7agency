@@ -1,1 +1,120 @@
 @import "@/app/styles/variables";
+
+.streamers-list {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding:50px 0 100px 0;
+
+    .streamer {
+        width: 340px;
+        min-width: 340px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 340px;
+        border-radius: 15px;
+        opacity: 1;
+        padding: 10px 20px 40px 20px;
+        position: relative;
+        justify-content: space-between;
+        transition: all .5s ease-in-out;
+        background-size: contain;
+
+        &::after {
+            content:'';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) -21.18%, #C09815 100%);
+            border-radius: 15px;
+        }
+
+        .social-media {
+            visibility: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-self: flex-end;
+            height: 40px;
+            width: 140px;
+            border-radius: 100px;
+            background-color: #E6BC31;
+            opacity: 0;
+            z-index: 9999;
+            transition: opacity, background-color, .5s ease-in-out;
+
+            ul {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                padding: 0 1rem;
+
+                li {
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    a {
+                        i {
+                            color: $white;
+                            font-size: 20px;
+                            transition: color .5s ease-in-out;
+                        }
+                    }
+
+                    &:hover {
+                        a {
+                            i {
+                                color: white;
+                            }
+                        }
+                        background-color: black;
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .social-media {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            &::after {
+                opacity: 0.7;
+            }
+        }
+
+        .info {
+            z-index: 9;
+            h2,
+            h3 {
+                color: $orange;
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 900;
+                line-height: 36px;
+            }
+
+            h3 {
+                font-size: 20px;
+                font-weight: 400;
+                color:$white;
+            }
+        }
+
+        &:hover {
+            .info {
+                h2 {
+                    color:$white;
+                }
+            }
+        }
+    }
+}

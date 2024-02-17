@@ -1,11 +1,11 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { streamers } from "@/layout/components/streamers/Streamers";
 import Container from "@/layout/components/container/Container";
 import Head from "next/head";
 import Header from "@/layout/components/header/Header";
 import AllStreamers from "@/layout/components/allstreamers/Streamer"
+import { streamers } from "@/layout/json/streamers";
 
 const menuItems = [
   { name: "anasayfa", href: "/", displayName: "Anasayfa" },

@@ -25,8 +25,14 @@ const Services: React.FC<IServicesProps> = () => {
                 width={90}
                 height={90}
               />
-              <h3>7/24 TikTok WhatsApp Desteği</h3>
-              <p>lorem ipsum</p>
+              <h3>Tiktok Keşfet Desteği</h3>
+              <p>
+                TikTok Keşfet Desteği hizmetinin içerisinde, yayıncılarımıza
+                keşfette daha büyük kitlelere ulaşabilmeleri için püf noktalar
+                ve bilgiler iletiyoruz. Bu bilgileri öğrenip, TikTok
+                algoritmasının kurallarına uyarak içerik ürettiklerinde
+                keşfetten çok yüksek etkileşimlere erişebiliyorlar.
+              </p>
             </div>
           </div>
           <div className="box">
@@ -41,7 +47,12 @@ const Services: React.FC<IServicesProps> = () => {
                 height={90}
               />
               <h3>7/24 TikTok WhatsApp Desteği</h3>
-              <p>lorem ipsum</p>
+              <p>
+                WhatsApp Destek Hattı tüm yayıncılarımız içi hizmet vermektedir.
+                Yayıncılarımız yaşadıkları problemlerle ilgili sonuçları ve
+                TikTtok ile ilgili tüm gelişmeleri anlık olarak WhatsApp
+                üzerinden TikTok temsilcilerimizden öğrenebiliyorlar.
+              </p>
             </div>
           </div>
           <div className="box">
@@ -55,8 +66,8 @@ const Services: React.FC<IServicesProps> = () => {
                 width={90}
                 height={90}
               />
-              <h3>7/24 TikTok WhatsApp Desteği</h3>
-              <p>lorem ipsum</p>
+              <h3>TikTok İçerik Üreticilerimize Ücretsiz Danışmanlık</h3>
+              <p>TikTok Ajansı olarak, TikTok'ta canlı yayın açan ve içerik üreticisi kullanıcılarına ücretsiz danışmanlık hizmeti sunmaktayız.</p>
             </div>
           </div>
         </div>

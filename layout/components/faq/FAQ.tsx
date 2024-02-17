@@ -3,11 +3,7 @@ import { useState } from "react";
 import Container from "../container/Container";
 import "./FAQ.scss";
 import FAQItem from "./FaqItem";
-
-const faqData = [
-  { question: "Soru 1", answer: "Cevap 1" },
-  { question: "Soru 2", answer: "Cevap 2" },
-];
+import { faqData } from "@/layout/json/faq";
 
 const Faq: React.FC<IFaqProps> = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

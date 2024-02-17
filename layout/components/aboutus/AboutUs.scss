@@ -8,7 +8,7 @@
         border-radius: 15px;
         background: rgba(49, 51, 58, 0.70);
         backdrop-filter: blur(10px);
-        padding: 50px 150px 50px 150px;
+        padding: 50px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -16,6 +16,10 @@
         align-items: center;
         text-align: center;
         z-index: 1;
+
+        @media (width >=$lg) {
+            padding: 50px 150px 50px 150px;
+        }
 
         .badge {
             position: absolute;

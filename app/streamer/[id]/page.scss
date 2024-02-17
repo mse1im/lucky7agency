@@ -15,6 +15,11 @@
 
     &-wrapper {
         display: flex;
+        flex-direction: column;
+
+        @media (width >=$lg) {
+            flex-direction: row;
+        }
 
         .img-wrapper {
             display: flex;
@@ -85,6 +90,11 @@
 
         .streamer-detail {
             display: flex;
+            margin-top: 20px;
+
+            @media (width >=$lg) {
+                margin-top: 0;
+            }
 
             .info {
                 p {

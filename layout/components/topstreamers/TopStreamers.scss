@@ -16,17 +16,28 @@
             flex-direction: row;
         }
 
-
-
         .slide-track {
             display: flex;
-            flex-direction: row;
             flex-wrap: nowrap;
-            gap: 50px;
+            gap: 150px;
             justify-content: center;
+            flex-direction: column;
+            align-items: center;
+
+            @media (width >=$lg) {
+                flex-direction: row;
+            }
 
             &.slide-track-second {
                 margin-top: 200px;
+                flex-direction: column;
+                gap: 150px;
+
+                @media (width >=$lg) {
+                    margin-top: 200px;
+                    flex-direction: row;
+                    gap: 50px;
+                }
             }
 
             @media (width >=$lg) {

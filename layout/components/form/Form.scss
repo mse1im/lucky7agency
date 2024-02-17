@@ -74,11 +74,15 @@
             flex-direction: column;
 
             .form-wrapper-action {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
                 grid-gap: 50px;
                 grid-row: 20px;
                 display: grid;
                 margin-bottom: 50px;
+
+                @media (width >=$md) {
+                    grid-template-columns: 1fr 1fr;
+                }
             }
 
             label {

@@ -5,19 +5,35 @@ footer {
     position: relative;
 
     .subscribe {
-        height: 75px;
+        min-height: 75px;
+        height: auto;
         background-color: var(--orange);
         display: flex;
         align-items: center;
+        padding: 20px;
+
+        @media (width >=$lg) {
+            padding: 0;
+        }
 
         >.container {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-direction: column;
+
+            @media (width >=$lg) {
+                flex-direction: row;
+            }
         }
 
         h3 {
             color: var(--dark);
+            margin-bottom: 1rem;
+
+            @media (width >=$lg) {
+                margin-bottom: 0;
+            }
         }
 
         a {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
-import { streamers } from "@/layout/components/streamers/Streamers";
 import "./Streamer.scss";
+import { streamers } from "../components/streamers/Streamers";
 const AllStreamers: React.FC = () => {
   const router = useRouter();
 

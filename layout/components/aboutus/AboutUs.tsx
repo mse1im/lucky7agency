@@ -60,24 +60,17 @@ const AboutUs: React.FC<IAboutUsProps> = () => {
         </div>
         <Image
           src={comment}
-          alt="comment"
+          alt="lucky7agency"
           width={120}
           height={92}
           className="comment-img"
         />
         <Image
           src={img1}
-          alt="comment"
+          alt="lucky7agency"
           width={222}
           height={290}
           className="img1"
-        />
-        <Image
-          src={img2}
-          alt="comment"
-          width={97}
-          height={88}
-          className="img2"
         />
       </Container>
     </section>

@@ -1,9 +1,15 @@
+"use client";
 import React from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import "./Streamer.scss";
-import { streamers } from "../components/streamers/Streamers";
+import { streamers } from "@/layout/json/streamers";
+
 const AllStreamers: React.FC = () => {
   const router = useRouter();
+  const pathname = usePathname();
+  const streamer = streamers.find((streamer) => {
+    return streamer.path.includes(pathname);
+  });
 
   const handleSlideClick = (path: any) => {
     router.push( `${path}`);

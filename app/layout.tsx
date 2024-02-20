@@ -1,7 +1,9 @@
 import "./styles/global.scss";
-import Footer from "@/layout/components/footer/Footer";
-import BackToTop from "@/layout/components/backtotop/BackToTop";
 import "remixicon/fonts/remixicon.css";
+import React from "react";
+
+const Footer = React.lazy(() => import("@/layout/components/footer/Footer"));
+const BackToTop = React.lazy(() => import("@/layout/components/backtotop/BackToTop"));
 
 export default function RootLayout({
   children,

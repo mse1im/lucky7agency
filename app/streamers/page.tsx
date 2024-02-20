@@ -1,13 +1,12 @@
 import React from "react";
-import Container from "@/layout/components/container/Container";
-import Header from "@/layout/components/header/Header";
 import { menuItems } from "@/layout/json/menu";
 import { Metadata } from "next";
 import { streamers } from "@/layout/json/streamers";
 
 const AllStreamers = React.lazy(() => import('@/layout/components/allstreamers/Streamer'));
-
+const Header = React.lazy(() => import("@/layout/components/header/Header"));
 const streamerNames = streamers.map(streamer => streamer.name).join(', ');
+const Container = React.lazy(() => import("@/layout/components/container/Container"));
 
 export const metadata: Metadata = {
   title: 'Lucky 7 Agency - Yayıncılar',

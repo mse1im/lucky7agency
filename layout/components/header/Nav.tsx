@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
 import "./Header.scss";
-import Container from "../container/Container";
+import React from "react";
+
+const Container = React.lazy(() => import("../container/Container"));
 
 const Nav: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
   const [isMenuActive, setIsMenuActive] = useState(false);

@@ -1,17 +1,19 @@
-import Container from "@/layout/components/container/Container";
-import Sponsors from "@/layout/components/sponsors/Sponsors";
-import Slider from "@/layout/components/slider/Slider";
-import Streamers from "@/layout/components/streamers/Streamers";
-import Form from "@/layout/components/form/Form";
-import AboutUs from "@/layout/components/aboutus/AboutUs";
-import Services from "@/layout/components/services/Services";
-import Faq from "@/layout/components/faq/FAQ";
-import Benefits from "@/layout/components/benefits/Benefits";
-import Header from "@/layout/components/header/Header";
-import TopStreamers from "@/layout/components/topstreamers/TopStreamers";
-import OtherStreamers from "@/layout/components/otherstreamers/OtherStreamers";
+import React from "react";
 import type { Metadata } from 'next'
 import { mainMenuItems } from "@/layout/json/menu";
+
+const Header = React.lazy(() => import("@/layout/components/header/Header"));
+const OtherStreamers = React.lazy(() => import("@/layout/components/otherstreamers/OtherStreamers"));
+const TopStreamers = React.lazy(() => import("@/layout/components/topstreamers/TopStreamers"));
+const Benefits = React.lazy(() => import("@/layout/components/benefits/Benefits"));
+const Faq = React.lazy(() => import("@/layout/components/faq/FAQ"));
+const AboutUs = React.lazy(() => import("@/layout/components/aboutus/AboutUs"));
+const Services = React.lazy(() => import("@/layout/components/services/Services"));
+const Form = React.lazy(() => import("@/layout/components/form/Form"));
+const Streamers = React.lazy(() => import("@/layout/components/streamers/Streamers"));
+const Slider = React.lazy(() => import("@/layout/components/slider/Slider"));
+const Sponsors = React.lazy(() => import("@/layout/components/sponsors/Sponsors"));
+const Container = React.lazy(() => import("@/layout/components/container/Container"));
  
 export const metadata: Metadata = {
   title: 'Lucky 7 Agency - Anasayfa',

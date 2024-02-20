@@ -1,12 +1,14 @@
 "use client";
 import darkLogo from "@/public/L7AgencyBeyaz3.png";
 import { useRouter } from "next/navigation";
-import Container from "../container/Container";
 import "./Header.scss";
-import Nav from "./Nav";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Shadow from "./shadow/Shadow";
+import React from "react";
+
+const Container = React.lazy(() => import("@/layout/components/container/Container"));
+const Nav = React.lazy(() => import("./Nav"));
+const Shadow = React.lazy(() => import("./shadow/Shadow"));
 
 const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
   const [isScrolled, setIsScrolled] = useState(false);

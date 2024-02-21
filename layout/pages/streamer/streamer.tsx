@@ -10,17 +10,14 @@ export default function Streamer() {
   const streamer = streamers.find((streamer) => {
     return streamer.path.includes(pathname);
   });
+  const streamerNames = streamers.map((streamer) => streamer.name).join(", ");
 
   return (
     <>
       <Head>
-        <title>
-          {`${streamer?.name} - Lucky 7 Agency`}
-        </title>
-        <meta
-          name="description"
-          content={streamer?.detail}
-        />
+        <title>{`${streamer?.name} - Lucky 7 Agency`}</title>
+        <meta name="description" content={streamer?.detail} />
+        <meta name="keywords" content={streamerNames} />
       </Head>
       {streamer ? (
         <div className="streamer">

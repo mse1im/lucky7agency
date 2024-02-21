@@ -15,13 +15,11 @@ export default function Streamer() {
     <>
       <Head>
         <title>
-          {streamer
-            ? `${streamer.name} - Lucky 7 Agency`
-            : "Streamer Bulunamadı"}
+          {`${streamer?.name} - Lucky 7 Agency`}
         </title>
         <meta
           name="description"
-          content={streamer ? streamer.detail : "Streamer bulunamadı."}
+          content={streamer?.detail}
         />
       </Head>
       {streamer ? (

@@ -6,7 +6,7 @@ import { streamers } from "@/layout/json/streamers";
 
 const AllStreamers: React.FC = () => {
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname() || '';
   const streamer = streamers.find((streamer) => {
     return streamer.path.includes(pathname);
   });

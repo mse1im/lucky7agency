@@ -38,16 +38,16 @@ const validationSchema = Yup.object().shape({
 function PhoneInput({ value, onChange }: IFormProps) {
   const [inputValue, setInputValue] = useState(value);
 
-  const handleChange = (e: any) => {
-    let val = e.target.value;
+  // const handleChange = (e: any) => {
+  //   let val = e.target.value;
 
-    val = val.replace(/[^\d]/g, "");
+  //   val = val.replace(/[^\d]/g, "");
 
-    if (val.length <= 11) {
-      setInputValue(val);
-      onChange(val);
-    }
-  };
+  //   if (val.length <= 11) {
+  //     setInputValue(val);
+  //     onChange(val);
+  //   }
+  // };
 
   const formatPhone = (val: any) => {
     if (!val) return "";
@@ -65,7 +65,7 @@ function PhoneInput({ value, onChange }: IFormProps) {
     <input
       type="tel"
       value={formatPhone(inputValue)}
-      onChange={handleChange}
+      // onChange={handleChange}
       placeholder="Telefon Numaranız"
     />
   );

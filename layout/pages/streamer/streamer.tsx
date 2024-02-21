@@ -4,12 +4,11 @@ import React from "react";
 import "./page.scss";
 import { streamers } from "@/layout/json/streamers";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Streamer() {
-  const pathname = usePathname();
-  const streamer = streamers.find((streamer) => {
-    return streamer.path.includes(pathname);
-  });
+  const pathname = usePathname() || '';
+  const streamer = streamers.find((streamer) => streamer.path.includes(pathname));
   const streamerNames = streamers.map((streamer) => streamer.name).join(", ");
 
   return (
@@ -22,7 +21,7 @@ export default function Streamer() {
       {streamer ? (
         <div className="streamer">
           <div className="goback">
-            <a href="/streamers">Tüm yayıncıları listele</a>
+            <Link href="/streamers">Tüm yayıncıları listele</Link>
           </div>
           <div className="streamer-wrapper">
             <div className="img-wrapper">

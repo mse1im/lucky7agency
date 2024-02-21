@@ -7,6 +7,7 @@ const AllStreamers = React.lazy(() => import('@/layout/components/allstreamers/S
 const Header = React.lazy(() => import("@/layout/components/header/Header"));
 const streamerNames = streamers.map(streamer => streamer.name).join(', ');
 const Container = React.lazy(() => import("@/layout/components/container/Container"));
+const Footer = React.lazy(() => import("@/layout/components/footer/Footer"));
 
 export const metadata: Metadata = {
   title: 'Lucky 7 Agency - Yayıncılar',
@@ -19,6 +20,7 @@ export default function Streamers() {
     <>
       <Header menuItems={menuItems} />
       <Container><AllStreamers /></Container>
+      <Footer />
     </>
   );
 }

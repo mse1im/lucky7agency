@@ -25,7 +25,7 @@ const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  return (
+  return (  
     <>
       <header className={isScrolled ? "fixed" : ""}>
         <Container>

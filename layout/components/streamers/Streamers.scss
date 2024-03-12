@@ -49,7 +49,7 @@
                 justify-content: space-between;
                 align-self: flex-end;
                 height: 40px;
-                width: 140px;
+                width: auto;
                 border-radius: 100px;
                 background-color: #E6BC31;
                 opacity: 0;
@@ -61,7 +61,8 @@
                     align-items: center;
                     justify-content: space-between;
                     width: 100%;
-                    padding: 0 1rem;
+                    padding: 0 .8rem;
+                    gap: 8px;
 
                     li {
                         width: 28px;

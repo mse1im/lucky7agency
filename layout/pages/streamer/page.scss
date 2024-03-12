@@ -46,23 +46,20 @@
             .social-media {
                 display: flex;
                 justify-content: space-between;
-                height: 40px;
-                width: 140px;
-                border-radius: 100px;
-                background-color: #E6BC31;
                 z-index: 9999;
                 transition: opacity, background-color, .5s ease-in-out;
     
                 ul {
                     display: flex;
                     align-items: center;
-                    justify-content: space-between;
                     width: 100%;
-                    padding: 0 1rem;
+                    padding: 0 .8rem;
+                    gap: 8px;
     
                     li {
-                        width: 28px;
-                        height: 28px;
+                        width: 40px;
+                        height: 40px;
+                        background-color: #E6BC31;
                         border-radius: 50%;
                         display: flex;
                         align-items: center;
@@ -78,10 +75,10 @@
                         &:hover {
                             a {
                                 i {
-                                    color: white;
+                                    color: $orange;
                                 }
                             }
-                            background-color: black;
+                            background-color: #2c2e36;
                         }
                     }
                 }

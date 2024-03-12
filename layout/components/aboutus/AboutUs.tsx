@@ -10,15 +10,14 @@ const AboutUs: React.FC<IAboutUsProps> = () => {
     <section className="aboutus" id="aboutus">
       <Container>
         <div className="aboutus-wrapper">
-          <div className="badge">Ödüllü tiktok ajansı</div>
+          <div className="badge">TikTok Resmi Partner Ajansı</div>
           <h2>Lucky 7 Agency</h2>
           <span>Ajansımızı Yakından Tanıyın!</span>
           <p>
-            Oyuncu ve menajer Temmuz Karikutal tarafından kurulan ve bugüne
-            kadar televizyon ve sinema sektöründe oyuncu menajeri olarak hizmet
-            veren, birçok başarılı projeye oyuncu gönderen Temmuz Ajans, 2023
-            Mart ayından itibaren artık TikTok LIVE Resmi Ajans partneri olarak,
-            Tiktok yayıncılarına da hizmet vermektedir.
+            Lucky7 Agency, TikTok'ta etkileyici içerik üreticilerini destekleyen
+            bir resmi TikTok partner ajansıdır. Amacımız içerik üreticilerinin
+            potansiyellerini en üst düzeye çıkarmalarına yardımcı olmak ve hedef
+            kitlelerine daha etkili bir şekilde ulaşmalarını sağlamaktır.
           </p>
         </div>
         <div className="aboutus-box-wrapper">
@@ -28,11 +27,11 @@ const AboutUs: React.FC<IAboutUsProps> = () => {
               Lucky 7 Agency olarak, TikTok platformundaki içerik
               üreticilerimizin her birinin benzersiz potansiyelini
               keşfetmelerini ve bu platformda büyük bir etki yaratmalarını
-              vizyonumuz olarak görüyoruz. <br /> <br /> İçerik üreticilerimizin özgün
-              seslerini duyurmasına ve geniş kitlelere ulaşmasına olanak tanıyan
-              bir ortam oluşturmak için çalışıyoruz. Onlara güçlü bir destek
-              sağlayarak, yaratıcı vizyonlarını hayata geçirmeleri ve TikTok'ta
-              büyümeleri için gerekli araçları ve rehberliği sunmayı
+              vizyonumuz olarak görüyoruz. <br /> <br /> İçerik üreticilerimizin
+              özgün seslerini duyurmasına ve geniş kitlelere ulaşmasına olanak
+              tanıyan bir ortam oluşturmak için çalışıyoruz. Onlara güçlü bir
+              destek sağlayarak, yaratıcı vizyonlarını hayata geçirmeleri ve
+              TikTok'ta büyümeleri için gerekli araçları ve rehberliği sunmayı
               hedefliyoruz. <br /> <br /> İçerik üreticilerimizin başarısı bizim
               önceliğimizdir ve onları desteklemek ve büyümelerine yardımcı
               olmak için buradayız.
@@ -46,16 +45,24 @@ const AboutUs: React.FC<IAboutUsProps> = () => {
               içerikler oluşturmak konusunda desteklemek amacıyla varız. İçerik
               üreticilerimizin potansiyelini maksimize etmek için stratejik
               rehberlik sunuyor, hedef kitlelerini etkilemek için yenilikçi
-              yaklaşımları geliştiriyoruz. <br /> <br /> Onların yaratıcı vizyonlarını
-              desteklemek ve TikTok platformunda büyümelerine yardımcı olmak
-              için çalışıyoruz. <br /> <br /> İçerik üreticilerimizin hedeflerini
-              gerçekleştirmek ve TikTok'ta başarılı bir içerik üreticisi
-              olmalarını sağlamayı amaçlıyoruz.
+              yaklaşımları geliştiriyoruz. <br /> <br /> Onların yaratıcı
+              vizyonlarını desteklemek ve TikTok platformunda büyümelerine
+              yardımcı olmak için çalışıyoruz. <br /> <br /> İçerik
+              üreticilerimizin hedeflerini gerçekleştirmek ve TikTok'ta başarılı
+              bir içerik üreticisi olmalarını sağlamayı amaçlıyoruz.
             </span>
           </div>
           <div className="box">
-            <h3>Görüşümüz</h3>
-            <span>lorem ipsum</span>
+            <h3>Neden Biz</h3>
+            <span>
+              Lucky7 Agency olarak, TikTok platformundaki deneyimimiz ve içerik
+              üreticileriyle kurduğumuz güçlü ilişkilerle TikTok'ta başarılı
+              olmalarını sağlıyoruz. <br /> <br />Her içerik üreticisi için özelleştirilmiş
+              çözümler sunarak hedeflerine uygun stratejiler geliştiriyor ve
+              uyguluyoruz.<br /> <br />Daha önce tüm sosyal medya platformlarında tecrübe
+              kazanmış yönetim ekibiyle içerik üreticilerinin tüm sorunlarına
+              çözüm üretmekteyiz.
+            </span>
           </div>
         </div>
         <Image

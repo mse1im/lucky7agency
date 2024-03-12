@@ -3,6 +3,7 @@ import darkLogo from "../../../public/footer.png";
 import comment from "../../../public/comment.png";
 import Image from "next/image";
 import "./Footer.scss";
+import Link from "next/link";
 
 const Footer: React.FC<IFooterProps> = () => {
   return (
@@ -15,36 +16,38 @@ const Footer: React.FC<IFooterProps> = () => {
       </div>
       <Container>
         <div className="lucky7agency">
-          <Image src={darkLogo} alt="Lucky 7 Agency" width={387} height={54} priority />
+          <Image
+            src={darkLogo}
+            alt="Lucky 7 Agency"
+            width={387}
+            height={54}
+            priority
+          />
           <p>
-            Oyuncu ve menajer Temmuz Karikutal tarafından kurulan ve bugüne
-            kadar televizyon ve sinema sektöründe oyuncu menajeri olarak hizmet
-            veren, birçok başarılı projeye oyuncu gönderen Lucky7 Agency
+            Tecrübeli yönetim ekibimiz, tüm sosyal medya platformlarında
+            edindiği deneyimle içerik üreticilerinin karşılaştığı her türlü
+            soruna çözüm sunmaktadır.
           </p>
           <ul className="social-media">
             <li>
-              <a href="" target="_blank">
+              <a
+                href="https://www.instagram.com/lucky7agencyofficial/"
+                target="_blank"
+              >
+                <i className="ri-instagram-line"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.tiktok.com/@lucky7agencyofficial?lang=tr-TR"
+                target="_blank"
+              >
                 <i className="ri-tiktok-fill"></i>
               </a>
             </li>
             <li>
-              <a href="" target="_blank">
-                <i className="ri-twitter-fill"></i>
-              </a>
-            </li>
-            <li>
-              <a href="" target="_blank">
-                <i className="ri-twitch-line"></i>
-              </a>
-            </li>
-            <li>
-              <a href="" target="_blank">
-                <i className="ri-youtube-line"></i>
-              </a>
-            </li>
-            <li>
-              <a href="" target="_blank">
-                <i className="ri-facebook-line"></i>
+              <a href="https://discord.gg/lucky7agency" target="_blank">
+                <i className="ri-discord-fill"></i>
               </a>
             </li>
           </ul>
@@ -52,56 +55,65 @@ const Footer: React.FC<IFooterProps> = () => {
         <ul className="content">
           <h4>Hizmetlerimiz</h4>
           <li>
-            <a href="#">
-              <i className="ri-arrow-right-line"></i> İçerik
-            </a>
+            <i className="ri-arrow-right-line"></i> Tiktok Keşfet Desteği
           </li>
           <li>
-            <a href="#">
-              <i className="ri-arrow-right-line"></i> İçerik
-            </a>
+            <i className="ri-arrow-right-line"></i> WhatsApp Destek Hattı
           </li>
           <li>
-            <a href="#">
-              <i className="ri-arrow-right-line"></i> İçerik
-            </a>
+            <i className="ri-arrow-right-line"></i> TikTok İçerik
+            Üreticilerimize Ücretsiz Danışmanlık
           </li>
         </ul>
         <ul className="content">
-          <h4>Hizmetlerimiz</h4>
+          <h4>Yayıncılarımız</h4>
           <li>
-            <a href="#">
-              <i className="ri-arrow-right-line"></i> İçerik
-            </a>
+            <Link href="/streamer/baris-g">
+              <i className="ri-arrow-right-line"></i> Baris-G
+            </Link>
           </li>
           <li>
-            <a href="#">
-              <i className="ri-arrow-right-line"></i> İçerik
-            </a>
+            <Link href="/streamer/sasuke">
+              <i className="ri-arrow-right-line"></i> Sasuke
+            </Link>
           </li>
           <li>
-            <a href="#">
-              <i className="ri-arrow-right-line"></i> İçerik
-            </a>
+            <Link href="/streamer/mef">
+              <i className="ri-arrow-right-line"></i> MEF
+            </Link>
+          </li>
+          <li>
+            <Link href="/streamers">
+              <i className="ri-arrow-right-line"></i> Top yayıncılarımız
+            </Link>
           </li>
         </ul>
         <div className="info-box">
           <h5>İletişim Bilgilerimiz</h5>
           <ul className="contact">
             <li>
-              <a href="mailto:info@lucky7agency.com.tr">
-                <i className="ri-mail-send-line"></i> info@lucky7agency.com.tr
+              <a href="mailto:basvuru@lucky7agency.com.tr">
+                <i className="ri-mail-send-line"></i>{" "}
+                basvuru@lucky7agency.com.tr
               </a>
             </li>
             <li>
-              <a href="tel:+850 440 44 55">
-                <i className="ri-phone-fill"></i> 850 440 44 55
+              <a href="tel:+0850 307 12 70">
+                <i className="ri-phone-fill"></i> 0850 307 12 70
               </a>
             </li>
-            <li><i className="ri-map-pin-line"></i> Kaptanpaşa Mah. Zürkkan Sokak İSTANBUL / TÜRKİYE</li>
+            <li>
+              <i className="ri-map-pin-line"></i>İSTANBUL / TÜRKİYE
+            </li>
           </ul>
         </div>
-        <Image src={comment} alt="comment" width={74} height={56} className="comment-img" />
+        <Image
+          src={comment}
+          alt="comment"
+          width={74}
+          height={56}
+          className="comment-img"
+        />
       </Container>
     </footer>
   );

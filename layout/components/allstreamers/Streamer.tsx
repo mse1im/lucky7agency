@@ -2,12 +2,12 @@
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 import "./Streamer.scss";
-import { streamers } from "@/layout/json/streamers";
+import { mainStreamers } from "@/layout/json/mainstreamers";
 
 const AllStreamers: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname() || '';
-  const streamer = streamers.find((streamer) => {
+  const streamer = mainStreamers.find((streamer) => {
     return streamer.path.includes(pathname);
   });
 
@@ -16,7 +16,7 @@ const AllStreamers: React.FC = () => {
   };
   return (
     <div className="streamers-list">
-      {streamers.map((streamer, index) => (
+      {mainStreamers.map((streamer, index) => (
         <div
           key={index}
           className="streamer"

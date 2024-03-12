@@ -36,6 +36,11 @@ const BackToTop = React.lazy(
 
 export const metadata: Metadata = {
   title: "Lucky 7 Agency - Anasayfa",
+  icons: {
+    icon: ['/favicon.ico'],
+    apple: ['/apple-touch-icon.png'],
+    shortcut: ['/apple-touch-icon.png'],
+  },
   keywords:
     "TikTok Ajansı, TikTok Yayıncı Destek, TikTok Canlı Yayın Danışmanlığı, Sosyal Medya Ajansı, TikTok Kitle Geliştirme, TikTok İçerik Stratejisi, TikTok Keşfet Desteği, 24/7 TikTok Destek, Ücretsiz TikTok Danışmanlık, TikTok Algoritma İpuçları",
   description:
@@ -55,7 +60,7 @@ const Homepage = () => {
       <Streamers />
       <Form />
       <TopStreamers />
-      <OtherStreamers />
+      {/* <OtherStreamers /> */}
       <AboutUs />
       <Services />
       <Benefits />

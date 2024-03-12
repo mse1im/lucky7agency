@@ -16,7 +16,7 @@ const Services: React.FC<IServicesProps> = () => {
         <div className="services-wrapper">
           <div className="box">
             <div className="badge">
-              <span>+500 Başarılı Projeler</span>
+              <span>+100 Başarılı Projeler</span>
             </div>
             <div className="info">
               <Image
@@ -37,7 +37,7 @@ const Services: React.FC<IServicesProps> = () => {
           </div>
           <div className="box">
             <div className="badge">
-              <span>+500 Başarılı Projeler</span>
+              <span>+100 Başarılı Projeler</span>
             </div>
             <div className="info">
               <Image
@@ -46,7 +46,7 @@ const Services: React.FC<IServicesProps> = () => {
                 width={90}
                 height={90}
               />
-              <h3>7/24 TikTok WhatsApp Desteği</h3>
+              <h3>WhatsApp Destek Hattı</h3>
               <p>
                 WhatsApp Destek Hattı tüm yayıncılarımız içi hizmet vermektedir.
                 Yayıncılarımız yaşadıkları problemlerle ilgili sonuçları ve
@@ -57,7 +57,7 @@ const Services: React.FC<IServicesProps> = () => {
           </div>
           <div className="box">
             <div className="badge">
-              <span>+500 Başarılı Projeler</span>
+              <span>+100 Başarılı Projeler</span>
             </div>
             <div className="info">
               <Image

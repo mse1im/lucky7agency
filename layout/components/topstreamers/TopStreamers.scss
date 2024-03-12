@@ -5,15 +5,19 @@
     position: relative;
 
     .slider {
-        margin-top: 60px;
         z-index: 1;
         position: relative;
         display: flex;
         justify-content: space-evenly;
         flex-direction: column;
+        padding-bottom: 0;
 
         @media (width >=$lg) {
             flex-direction: row;
+        }
+
+        .title {
+            padding: 20px 0;
         }
 
         .slide-track {
@@ -23,26 +27,21 @@
             justify-content: center;
             flex-direction: column;
             align-items: center;
+            margin: 150px 0;
 
             @media (width >=$lg) {
                 flex-direction: row;
+                gap: 50px;
             }
 
             &.slide-track-second {
-                margin-top: 200px;
                 flex-direction: column;
                 gap: 150px;
+                margin: 150px 0;
 
                 @media (width >=$lg) {
-                    margin-top: 200px;
                     flex-direction: row;
                     gap: 50px;
-                }
-            }
-
-            @media (width >=$lg) {
-                &.slide-track-second {
-                    margin-top: 0;
                 }
             }
         }
@@ -61,6 +60,7 @@
             justify-content: space-between;
             transition: all .5s ease-in-out;
             background-size: contain;
+            margin-top: 30px;
 
             &::before {
                 width: 115%;
@@ -74,6 +74,12 @@
             }
 
             &.first {
+                margin-top: 0;
+
+                @media (width <=$md) {
+                    order: 1;
+                }
+
                 &::before {
                     border-color: $orange;
                 }
@@ -95,6 +101,10 @@
                     border-color: #f87f07;
                 }
 
+                @media (width <=$md) {
+                    order: 2;
+                }
+
                 .trophy {
                     i {
                         color:#f87f07;
@@ -106,6 +116,9 @@
             }
 
             &.third {
+                @media (width <=$md) {
+                    order: 3;
+                }
                 &::before {
                     border-color: #c0c0c0;
                 }
@@ -163,7 +176,7 @@
                 justify-content: space-between;
                 align-self: flex-end;
                 height: 40px;
-                width: 140px;
+                width: auto;
                 border-radius: 100px;
                 background-color: #E6BC31;
                 opacity: 0;
@@ -175,7 +188,8 @@
                     align-items: center;
                     justify-content: space-between;
                     width: 100%;
-                    padding: 0 1rem;
+                    padding: 0 .8rem;
+                    gap: 8px;
 
                     li {
                         width: 28px;
@@ -220,7 +234,7 @@
                 h2,
                 h3 {
                     color: $orange;
-                    font-size: 22px;
+                    font-size: 20px;
                     font-style: normal;
                     font-weight: 900;
                 }
@@ -241,4 +255,5 @@
             }
         }
     }
+
 }

@@ -42,4 +42,11 @@
             }
         }
     }
+
+    .form-wrapper {
+        width: 100%;
+        form {
+            flex: 1;
+        }
+    }
 }

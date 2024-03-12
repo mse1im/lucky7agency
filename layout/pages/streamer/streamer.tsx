@@ -2,14 +2,14 @@
 import { usePathname } from "next/navigation";
 import React from "react";
 import "./page.scss";
-import { streamers } from "@/layout/json/streamers";
+import { mainStreamers } from "@/layout/json/mainstreamers";
 import Head from "next/head";
 import Link from "next/link";
 
 export default function Streamer() {
   const pathname = usePathname() || '';
-  const streamer = streamers.find((streamer) => streamer.path.includes(pathname));
-  const streamerNames = streamers.map((streamer) => streamer.name).join(", ");
+  const streamer = mainStreamers.find((streamer) => streamer.path.includes(pathname));
+  const streamerNames = mainStreamers.map((streamer) => streamer.name).join(", ");
 
   return (
     <>

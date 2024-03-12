@@ -4,6 +4,7 @@ import Container from "../container/Container";
 import "./Streamers.scss";
 import { useRouter } from "next/navigation";
 import { streamers } from "@/layout/json/streamers";
+import Link from "next/link";
 
 const Streamers: React.FC<IStreamersProps> = () => {
   const slideTrackRef = useRef<HTMLDivElement>(null);
@@ -11,7 +12,7 @@ const Streamers: React.FC<IStreamersProps> = () => {
   const router = useRouter();
 
   const handleSlideClick = (path: any) => {
-    router.push( `${path}`);
+    router.push(`${path}`);
   };
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const Streamers: React.FC<IStreamersProps> = () => {
             { transform: `translateX(${-totalWidth / 2}px)` },
           ],
           {
-            duration: 20000,
+            duration: 50000,
             iterations: Infinity,
           }
         );
@@ -72,10 +73,8 @@ const Streamers: React.FC<IStreamersProps> = () => {
           <h2>Yayıncılarımız</h2>
         </div>
         <div className="getastreamer">
-            <a href="/streamers">
-              Tüm yayıncıları gör
-            </a>
-          </div>
+          <Link href="/streamers">Tüm yayıncıları gör</Link>
+        </div>
       </Container>
       <div className="slider">
         <div className="slide-track" ref={slideTrackRef}>

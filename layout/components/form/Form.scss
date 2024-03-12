@@ -1,154 +1,185 @@
 @import "@/app/styles/variables";
 
 .form {
-    background-color: var(--bodyColor);
-    padding-bottom: 50px;
-    position: relative;
+  background-color: var(--bodyColor);
+  padding-bottom: 50px;
+  position: relative;
 
-    &-wrapper {
-        padding: 50px 0;
+  &-wrapper {
+    padding: 50px 0;
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+
+    @media (width >=$md) {
+      flex-direction: row;
+    }
+
+    &-infobox {
+      flex: 1;
+      border-radius: 15px;
+      border: 1px solid #373940;
+      background: #27292e;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+
+      h2 {
+        color: $orange;
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 36px;
+        padding-top: 20px;
+      }
+
+      p {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 28px;
+        color: $white;
+        padding: 20px 0;
+      }
+
+      span {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 28px;
+        color: $white;
+      }
+
+      ul {
         display: flex;
-        gap: 50px;
         flex-direction: column;
+        gap: 20px;
+        padding: 20px 0 20px 20px;
+
+        li {
+          position: relative;
+          &::before {
+            content:'';
+            position: absolute;
+            left: -25px;
+            top: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4E515A;
+            border: 4px solid #3b3d44;
+          }
+        }
+      }
+
+      button {
+        padding: 20px 0;
+        @include button;
+        text-transform: capitalize;
+        align-self: center;
+      }
+    }
+
+    form {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+
+      .react-datepicker-wrapper {
+        width: 100%;
+      }
+
+      .form-wrapper-action {
+        grid-template-columns: 1fr;
+        grid-gap: 50px;
+        grid-row: 20px;
+        display: grid;
+        margin-bottom: 50px;
 
         @media (width >=$md) {
-            flex-direction: row;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      label {
+        position: relative;
+        i {
+          position: absolute;
+          left: 22px;
+          top: 18px;
+          z-index: 9;
+          font-size: 18px;
+          color: #5d616a;
+        }
+        input,
+        select, textarea {
+          width: 100%;
+          border-radius: 100px;
+          border: 1px solid #373940;
+          background-color: #27292e;
+          padding: 15px 70px;
+          color: $white;
+          font-family: "Titillium Web", sans-serif;
+          outline: none;
+          font-size: 16px;
+          font-weight: 400;
+
+          &::placeholder {
+            font-size: 18px;
+            font-weight: 400;
+            color: #5d616a;
+          }
         }
 
-        &-infobox {
-            flex: 1;
-            border-radius: 15px;
-            border: 1px solid #373940;
-            background: #27292E;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            z-index: 1;
-
-            h2 {
-                color: $orange;
-                font-size: 35px;
-                font-style: normal;
-                font-weight: 900;
-                line-height: 36px;
-                padding-top: 20px;
-            }
-
-            p {
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: 28px;
-                color: $white;
-                padding: 20px 0;
-            }
-
-            span {
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: 28px;
-                color: $white;
-            }
-
-            ul {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                padding: 20px 0 20px 20px;
-
-                li {}
-            }
-
-            button {
-                padding: 20px 0;
-                @include button;
-                text-transform: capitalize;
-                align-self: center;
-            }
+        &::after {
+          content: "";
+          width: 1px;
+          height: 100%;
+          position: absolute;
+          left: 55px;
+          top: 0;
+          background-color: #373940;
         }
 
-        form {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-
-            .form-wrapper-action {
-                grid-template-columns: 1fr;
-                grid-gap: 50px;
-                grid-row: 20px;
-                display: grid;
-                margin-bottom: 50px;
-
-                @media (width >=$md) {
-                    grid-template-columns: 1fr 1fr;
-                }
-            }
-
-            label {
-                position: relative;
-                i {
-                    position: absolute;
-                    left: 20px;
-                    top: 20px;
-                    z-index: 9;
-                    font-size: 18px;
-                    color:#5D616A;
-                }
-                input, select {
-                    width: 100%;
-                    border-radius: 100px;
-                    border:1px solid #373940;
-                    background-color: #27292E;
-                    padding: 15px 70px;
-                    color: $white;
-                    font-family: 'Titillium Web', sans-serif;
-                    outline: none;
-                    font-size: 16px;
-                    font-weight: 400;
-
-                    &::placeholder {
-                        font-size: 18px;
-                        font-weight: 400;
-                        color:#5D616A;
-                    }
-                }
-
-                &::after {
-                    content:'';
-                    width: 1px;
-                    height: 100%;
-                    position: absolute;
-                    left: 55px;
-                    top: 0;
-                    background-color: #373940;
-                }
-            }
-
-            button {
-                margin-top: 50px;
-                border-radius: 100px;
-                border: 1px solid #373940;
-                background: $orange;
-                padding: 10px;
-                font-size: 18px;
-                color: #27292E;
-                font-weight: 700;
-                cursor: pointer;
-            }
-
-            .error {
-                position: absolute;
-                left: 0;
-                bottom: -35px;
-                color: red;
-            }
+        &.text {
+          .error {
+            bottom: -5px;
+          }
+          textarea {
+            margin: 20px 0;
+            padding: 15px 0 20px 40px;
+          }
+          &::after {
+            display: none;
+          }
         }
-    }
+      }
 
-    svg {
+      button {
+        margin-top: 50px;
+        border-radius: 100px;
+        border: 1px solid #373940;
+        background: $orange;
+        padding: 10px;
+        font-size: 18px;
+        color: #27292e;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .error {
         position: absolute;
         left: 0;
-        top: 0;
+        bottom: -35px;
+        color: red;
+      }
     }
+  }
+
+  svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }

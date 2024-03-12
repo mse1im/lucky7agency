@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { cities } from "./cities";
-import { useState } from "react";
+import axios from "axios";
 
 const initialValues = {
   name: "",
@@ -27,7 +27,7 @@ const validationSchema = Yup.object().shape({
     .email("Geçersiz e-posta adresi")
     .required("E-posta eksik veya hatalı"),
   phone: Yup.string()
-    .matches(/^\d{10}$/, "Geçerli bir telefon numarası girin")
+    .matches(/^\d{11}$/, "Geçerli bir telefon numarası girin")
     .required("Telefon numarası zorunlu"),
   birthDate: Yup.date().required("Doğum tarihi zorunlu").nullable(),
   tiktok: Yup.string().required("TikTok kullanıcı adı zorunlu"),
@@ -35,43 +35,39 @@ const validationSchema = Yup.object().shape({
   gender: Yup.string().required("Cinsiyet seçimi zorunlu"),
 });
 
-function PhoneInput({ value, onChange }: IFormProps) {
-  const [inputValue, setInputValue] = useState(value);
-
-  // const handleChange = (e: any) => {
-  //   let val = e.target.value;
-
-  //   val = val.replace(/[^\d]/g, "");
-
-  //   if (val.length <= 11) {
-  //     setInputValue(val);
-  //     onChange(val);
-  //   }
-  // };
-
-  const formatPhone = (val: any) => {
-    if (!val) return "";
-
-    const match = val.match(/^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/);
-
-    if (match) {
-      return `${match[1]}(${match[2]}) ${match[3]} ${match[4]} ${match[5]}`;
-    }
-
-    return val;
-  };
-
-  return (
-    <input
-      type="tel"
-      value={formatPhone(inputValue)}
-      // onChange={handleChange}
-      placeholder="Telefon Numaranız"
-    />
-  );
-}
-
 const FormArea: React.FC<IFormProps> = () => {
+  const onSubmit = (
+    values: any,
+    actions: { resetForm: () => void; setSubmitting: (arg0: boolean) => void }
+  ) => {
+    const apiUrl = "https://example.com/api/form-submit";
+    const formData = new FormData();
+  
+    Object.keys(values).forEach(key => {
+      if (key !== 'file') {
+        formData.append(key, values[key]);
+      }
+    });
+    if (values.file) {
+      formData.append('file', values.file);
+    }
+  
+    axios.post(apiUrl, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(response => {
+      console.log("Form başarıyla gönderildi:", response.data);
+      actions.resetForm();
+    })
+    .catch(error => {
+      console.error("Form gönderimi sırasında hata oluştu:", error);
+    })
+    .finally(() => {
+      actions.setSubmitting(false);
+    });
+  };
   return (
     <section className="form" id="form">
       <Container>
@@ -109,9 +105,7 @@ const FormArea: React.FC<IFormProps> = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-              console.log(values);
-            }}
+            onSubmit={onSubmit}
           >
             {({ setFieldValue, values }) => (
               <Form>
@@ -147,9 +141,10 @@ const FormArea: React.FC<IFormProps> = () => {
 
                   <label htmlFor="phone">
                     <i className="ri-smartphone-line"></i>
-                    <PhoneInput
-                      value={values.phone}
-                      onChange={(val: any) => setFieldValue("phone", val)}
+                    <Field
+                      type="tel"
+                      name="phone"
+                      placeholder="Telefon Numaranız"
                     />
                     <ErrorMessage
                       name="phone"

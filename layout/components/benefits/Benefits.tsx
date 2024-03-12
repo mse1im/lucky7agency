@@ -8,30 +8,18 @@ const Benefits: React.FC<IBenefitsProps> = () => {
       <Container>
         <div className="benefits-wrapper">
           <ul>
-            <Counter start={0} end={100} duration={5000} subtitle="Yayıncı" />
+            <Counter start={0} end={850} duration={5000} subtitle="Yayıncı" />
             <Counter
               start={0}
-              end={50000}
+              end={250}
               duration={5000}
               subtitle="İçerik / Video"
             />
             <Counter
               start={0}
-              end={10000000}
+              end={1000000}
               duration={5000}
               subtitle="Beğeni"
-            />
-            <Counter
-              start={0}
-              end={100000}
-              duration={5000}
-              subtitle="Yayıncılarımızın Kazancı"
-            />
-            <Counter
-              start={50}
-              end={350}
-              duration={5000}
-              subtitle="X"
             />
           </ul>
         </div>

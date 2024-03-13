@@ -47,8 +47,17 @@ const Announcements: React.FC<ISliderProps> = () => {
             <b>DUYURULAR</b>
           </h2>
         </div>
+        <h1>
+        Lucky 7 Live
+        </h1>
         <span>
-          Duyurularımızı buradan takip edebilirsiniz.
+          Show & Sohbet kategorisinde yayın yapan içerik üreticilerimiz için
+          08.03.2024-15:03.3034 tarihleri arasında , sıralamaya giren içerik
+          üreticilerimizin ajansımız tarafından düzenlenecek sürpriz isimlerle
+          PK etkinliğine katılma hakkı elde edebilecekleri ajans içi
+          etkinliğimizdir. Sıralama puanlama usulüyle belirlenecektir. Puanlar
+          ise canlı yayınlar esnasında alınan her 1 elmas=1 Puan , PK esnasında
+          her 1 elmas=2 Puan olarak hesaplanmaktadır.
         </span>
       </SwiperSlide>
     </Swiper>

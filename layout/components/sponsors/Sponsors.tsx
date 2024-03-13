@@ -132,7 +132,7 @@ const Sponsors: React.FC<ISponsorsProps> = () => {
         </Swiper>
       </section>
       {isModalOpen && (
-        <section className="modal">
+        <section className="modal sponsor">
           <div className="modal-content">
             <button onClick={() => setIsModalOpen(false)} className="close">
               <i className="ri-close-line"></i>

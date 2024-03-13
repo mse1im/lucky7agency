@@ -152,6 +152,11 @@
             z-index: 2;
             a {
                 @include button;
+
+                &:hover {
+                    background-color: #222327;
+                    color:$orange;
+                }
             }
         }
 

@@ -6,7 +6,7 @@ header {
   align-items: center;
   height: 100px;
   justify-content: space-between;
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 9;
@@ -29,12 +29,12 @@ header {
     position: fixed;
     z-index: 9;
     background-color: #1e1f2385;
-    animation: slideDown .5s both;
+    animation: slideDown 0.5s both;
     border-bottom: 1px solid #7c7c7c17;
   }
 
   &:not(.fixed) {
-    animation: slideUp .5s both;
+    animation: slideUp 0.5s both;
   }
 
   @keyframes slideDown {
@@ -57,7 +57,7 @@ header {
     }
   }
 
-  >.container {
+  > .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -85,14 +85,13 @@ header {
         }
 
         &.active {
-
           a {
             color: $dark-theme-orange;
             font-weight: 700;
           }
 
           &::before {
-            content: '';
+            content: "";
             position: absolute;
             top: -36px;
             width: 100%;
@@ -126,7 +125,7 @@ header {
       li {
         padding: 20px 0;
         position: relative;
-        
+
         &:not(:last-child) {
           border-bottom: 1px solid rgba(124, 124, 124, 0.0901960784);
         }
@@ -145,7 +144,6 @@ header {
         }
 
         &.active {
-
           a {
             color: $dark-theme-orange;
             font-weight: 700;
@@ -153,7 +151,7 @@ header {
           }
 
           &::before {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             width: 6px;
@@ -162,13 +160,12 @@ header {
             background-color: $dark-theme-orange;
           }
         }
-
       }
     }
 
     .hamburger {
       border-radius: 5px;
-      border: 1px solid #FFF;
+      border: 1px solid #fff;
       width: 46px;
       height: 40px;
       display: flex;
@@ -186,8 +183,8 @@ header {
         position: relative;
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
-        -webkit-transition: .5s ease-in-out;
-        transition: .5s ease-in-out;
+        -webkit-transition: 0.5s ease-in-out;
+        transition: 0.5s ease-in-out;
         cursor: pointer;
         top: 4px;
         left: 0;
@@ -206,10 +203,10 @@ header {
           -moz-transform: rotate(0deg);
           -o-transform: rotate(0deg);
           transform: rotate(0deg);
-          -webkit-transition: .25s ease-in-out;
-          -moz-transition: .25s ease-in-out;
-          -o-transition: .25s ease-in-out;
-          transition: .25s ease-in-out;
+          -webkit-transition: 0.25s ease-in-out;
+          -moz-transition: 0.25s ease-in-out;
+          -o-transition: 0.25s ease-in-out;
+          transition: 0.25s ease-in-out;
 
           &:nth-child(1) {
             top: 0px;
@@ -227,7 +224,6 @@ header {
 
         &.active {
           & span {
-
             &:nth-child(1) {
               top: 18px;
               width: 0%;
@@ -259,7 +255,6 @@ header {
         @media screen and (max-width: 991px) {
           display: flex;
         }
-
       }
     }
 
@@ -279,8 +274,13 @@ header {
       @include button;
       display: none;
 
+      &:hover {
+        background-color: #222327;
+        color: $orange;
+      }
+
       i {
-        margin-right: .5rem;
+        margin-right: 0.5rem;
         font-size: 20px;
       }
 
@@ -291,7 +291,7 @@ header {
 
     a.call-us-mobile {
       border-radius: 5px;
-      border: 1px solid #FFF;
+      border: 1px solid #fff;
       width: 46px;
       height: 40px;
       display: flex;

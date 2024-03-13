@@ -53,6 +53,12 @@
 
             button {
                 @include button;
+                transition: all .5s ease-in-out;
+
+                &:hover {
+                    background-color: #222327;
+                    color:$orange;
+                }
             }
         }
 
@@ -60,5 +66,4 @@
             flex-direction: row;
         }
     }
-
 }

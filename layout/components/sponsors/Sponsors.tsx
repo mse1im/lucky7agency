@@ -40,7 +40,7 @@ const Sponsors: React.FC<ISponsorsProps> = () => {
     values: any,
     actions: any
   ) => {
-    const apiUrl = "https://example.com/api/form-submit";
+    const apiUrl = "https://mail-api-2gca.onrender.com/api/sponsor";
     const formData = new FormData();
   
     for (const key in values) {

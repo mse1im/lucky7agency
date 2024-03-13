@@ -40,16 +40,16 @@ const FormArea: React.FC<IFormProps> = () => {
     values: any,
     actions: { resetForm: () => void; setSubmitting: (arg0: boolean) => void }
   ) => {
-    const apiUrl = "https://example.com/api/form-submit";
+    const apiUrl = "https://mail-api-2gca.onrender.com/api/streamer";
     const formData = new FormData();
   
     Object.keys(values).forEach(key => {
-      if (key !== 'file') {
+      if (key !== 'img') {
         formData.append(key, values[key]);
       }
     });
-    if (values.file) {
-      formData.append('file', values.file);
+    if (values.img) {
+      formData.append('img', values.img);
     }
   
     axios.post(apiUrl, formData, {
@@ -235,18 +235,17 @@ const FormArea: React.FC<IFormProps> = () => {
                 <label htmlFor="file">
                   <i className="ri-image-line"></i>
                   <input
-                    id="file"
-                    name="file"
+                    id="img"
+                    name="img"
                     type="file"
                     onChange={(event) => {
                       setFieldValue(
-                        "file",
+                        "img",
                         event.currentTarget.files &&
                           event.currentTarget.files[0]
                       );
                     }}
                   />
-                  <ErrorMessage name="file" component="div" className="error" />
                 </label>
 
                 <button type="submit">Yayıncı Başvurumu Gönder!</button>

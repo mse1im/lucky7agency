@@ -1,5 +1,4 @@
 "use client";
-import darkLogo from "@/public/L7AgencyBeyaz3.png";
 import { useRouter } from "next/navigation";
 import "./Header.scss";
 import Image from "next/image";
@@ -30,7 +29,7 @@ const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
       <header className={isScrolled ? "fixed" : ""}>
         <Container>
           <Image
-            src={darkLogo}
+            src="/L7AgencyBeyaz3.png"
             alt="Lucky 7 Agency"
             width={306}
             height={43}

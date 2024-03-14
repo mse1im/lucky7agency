@@ -44,12 +44,12 @@ const FormArea: React.FC<IFormProps> = () => {
     const formData = new FormData();
   
     Object.keys(values).forEach(key => {
-      if (key !== 'img') {
+      if (key !== 'image') {
         formData.append(key, values[key]);
       }
     });
-    if (values.img) {
-      formData.append('img', values.img);
+    if (values.image) {
+      formData.append('image', values.image);
     }
   
     axios.post(apiUrl, formData, {
@@ -235,12 +235,12 @@ const FormArea: React.FC<IFormProps> = () => {
                 <label htmlFor="file">
                   <i className="ri-image-line"></i>
                   <input
-                    id="img"
-                    name="img"
+                    id="image"
+                    name="image"
                     type="file"
                     onChange={(event) => {
                       setFieldValue(
-                        "img",
+                        "image",
                         event.currentTarget.files &&
                           event.currentTarget.files[0]
                       );

@@ -37,10 +37,13 @@ const validationSchema = Yup.object().shape({
 
 const Sponsors: React.FC<ISponsorsProps> = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const onSubmit = (
     values: any,
     actions: any
   ) => {
+    setIsSubmitting(true);
     const apiUrl = "https://mail-api-2gca.onrender.com/api/sponsor";
     const formData = new FormData();
   
@@ -72,8 +75,17 @@ const Sponsors: React.FC<ISponsorsProps> = () => {
     })
     .finally(() => {
       actions.setSubmitting(false);
+      setIsSubmitting(false);
     });
   };
+
+  const SuccessComponent = () => (
+    <div className="success">
+      <i className="ri-checkbox-circle-fill" />{" "}
+      <span>Form başarıyla gönderildi!</span>
+    </div>
+  );
+
   return (
     <>
       <section className="sponsors">
@@ -243,7 +255,12 @@ const Sponsors: React.FC<ISponsorsProps> = () => {
                         />
                       </label>
 
-                    <button type="submit">Başvurumu Gönder</button>
+                    <button type="submit" disabled={isSubmitting}>Başvurumu Gönder</button>
+                    {isSubmitting && (
+                    <div className="spinner">
+                      <i className="ri-loader-fill" />
+                    </div>
+                  )}
                   </Form>
                 )}
               </Formik>

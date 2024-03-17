@@ -148,12 +148,12 @@
           padding: 12px 18px;
           border: 1px solid #2c2e36;
           padding: 12px 20px;
-          color: $white;
-          background: #2c2e36;
+          color: #2c2e36;;
+          background: #e6bc31;
 
           &:hover {
-            background-color: #e6bc31;
-            color: #2c2e36;
+            background-color: #2c2e36;
+            color:$white;
           }
 
           i {

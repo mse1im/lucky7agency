@@ -11,6 +11,7 @@ import axios from "axios";
 
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import { toast } from "react-toastify";
 
 const initialValues = {
   brandname: "",
@@ -54,6 +55,15 @@ const Sponsors: React.FC<ISponsorsProps> = () => {
     })
     .then((response) => {
       console.log("Form başarıyla gönderildi:", response.data);
+      toast.success("Mail Gönderildi!", {
+        position: "top-right",
+        autoClose: 15000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       actions.resetForm();
       setIsModalOpen(false);
     })

@@ -311,10 +311,10 @@
 
     .sh {
       right: 650px;
-      top: 300px;
+      top: 200px;
     }
 
-    @media (width >=$md) {
+    @media (width >=$lg) {
       display: block;
     }
   }

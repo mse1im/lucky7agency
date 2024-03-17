@@ -55,7 +55,7 @@ const TopStreamers: React.FC<IStreamersProps> = () => {
             </div>
           </Container>
           <div className="slide-track">
-            {finalOrderStreamers.map((streamer, index) => (
+            {finalOrderStreamers2.map((streamer, index) => (
               <div
                 key={index}
                 className={`slide ${getClassNameForRank(streamer.rank)}`}
@@ -110,7 +110,7 @@ const TopStreamers: React.FC<IStreamersProps> = () => {
             </div>
           </Container>
           <div className="slide-track slide-track-second">
-            {finalOrderStreamers2.map((streamer, index) => (
+            {finalOrderStreamers.map((streamer, index) => (
               <div
                 key={index}
                 className={`slide ${getClassNameForRank(streamer.rank)}`}

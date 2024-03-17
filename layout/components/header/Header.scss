@@ -27,7 +27,7 @@ header {
   &.fixed {
     width: 100%;
     position: fixed;
-    z-index: 9;
+    z-index: 9999;
     background-color: #1e1f2385;
     animation: slideDown 0.5s both;
     border-bottom: 1px solid #7c7c7c17;

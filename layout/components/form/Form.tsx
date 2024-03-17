@@ -9,6 +9,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { cities } from "./cities";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { format } from "date-fns";
+import { useState } from "react";
 
 const initialValues = {
   name: "",
@@ -19,6 +22,7 @@ const initialValues = {
   city: "",
   hearus: "",
   gender: "",
+  image: null,
 };
 
 const validationSchema = Yup.object().shape({
@@ -32,42 +36,66 @@ const validationSchema = Yup.object().shape({
   birthDate: Yup.date().required("Doğum tarihi zorunlu").nullable(),
   tiktok: Yup.string().required("TikTok kullanıcı adı zorunlu"),
   city: Yup.string().required("Şehir seçimi zorunlu"),
+  image: Yup.mixed().required("Dosya yükleme zorunlu"),
   gender: Yup.string().required("Cinsiyet seçimi zorunlu"),
 });
 
 const FormArea: React.FC<IFormProps> = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+
+  const resetFormState = () => {
+    setSubmissionSuccess(false); // Başarılı gönderim durumunu sıfırla
+    setIsSubmitting(false); // Gönderim durumunu sıfırla (isteğe bağlı)
+  };
+
   const onSubmit = (
     values: any,
     actions: { resetForm: () => void; setSubmitting: (arg0: boolean) => void }
   ) => {
+    setIsSubmitting(true);
     const apiUrl = "https://mail-api-2gca.onrender.com/api/streamer";
     const formData = new FormData();
-  
-    Object.keys(values).forEach(key => {
-      if (key !== 'image') {
+
+    Object.keys(values).forEach((key) => {
+      if (key !== "image") {
         formData.append(key, values[key]);
       }
     });
     if (values.image) {
-      formData.append('image', values.image);
+      formData.append("image", values.image);
     }
-  
-    axios.post(apiUrl, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    .then(response => {
-      console.log("Form başarıyla gönderildi:", response.data);
-      actions.resetForm();
-    })
-    .catch(error => {
-      console.error("Form gönderimi sırasında hata oluştu:", error);
-    })
-    .finally(() => {
-      actions.setSubmitting(false);
-    });
+
+    if (values.birthDate) {
+      formData.append("birthDate", format(values.birthDate, "yyyy-MM-dd"));
+    }
+
+    axios
+      .post(apiUrl, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        toast.success("Form başarıyla gönderildi!");
+        setSubmissionSuccess(true);
+        actions.resetForm();
+      })
+      .catch((error) => {
+        toast.error("Form gönderimi sırasında bir hata oluştu.");
+      })
+      .finally(() => {
+        setIsSubmitting(false); // Gönderim süreci tamamlandığında
+      });
   };
+
+  const SuccessComponent = () => (
+    <div className="success">
+      <i className="ri-checkbox-circle-fill" />{" "}
+      <span>Form başarıyla gönderildi!</span>
+    </div>
+  );
+
   return (
     <section className="form" id="form">
       <Container>
@@ -100,158 +128,193 @@ const FormArea: React.FC<IFormProps> = () => {
                 Herhangi bir ay içerisinde 1500$ üzeri gelirinizin olmaması
               </li>
             </ul>
-            <button>Formu Doldur, Başvuru Yap!</button>
-          </div>
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={onSubmit}
-          >
-            {({ setFieldValue, values }) => (
-              <Form>
-                <div className="form-wrapper-action">
-                  <label htmlFor="name">
-                    <i className="ri-user-line"></i>
-                    <Field
-                      type="text"
-                      name="name"
-                      placeholder="İsim & Soyisim"
-                    />
-
-                    <ErrorMessage
-                      name="name"
-                      component="div"
-                      className="error"
-                    />
-                  </label>
-
-                  <label htmlFor="email">
-                    <i className="ri-mail-line"></i>
-                    <Field
-                      type="email"
-                      name="email"
-                      placeholder="E-posta Adresiniz"
-                    />
-                    <ErrorMessage
-                      name="email"
-                      component="div"
-                      className="error"
-                    />
-                  </label>
-
-                  <label htmlFor="phone">
-                    <i className="ri-smartphone-line"></i>
-                    <Field
-                      type="tel"
-                      name="phone"
-                      placeholder="Telefon Numaranız"
-                    />
-                    <ErrorMessage
-                      name="phone"
-                      component="div"
-                      className="error"
-                    />
-                  </label>
-
-                  <label htmlFor="birthDate">
-                    <i className="ri-cake-2-line"></i>
-                    <DatePicker
-                      name="birthDate"
-                      selected={
-                        values.birthDate ? new Date(values.birthDate) : null
-                      }
-                      onChange={(date) => setFieldValue("birthDate", date)}
-                      dateFormat="dd/MM/yyyy"
-                      placeholderText="Doğum Tarihiniz"
-                    />
-                    <ErrorMessage
-                      name="birthDate"
-                      component="div"
-                      className="error"
-                    />
-                  </label>
-
-                  <label htmlFor="tiktok">
-                    <i className="ri-tiktok-fill"></i>
-                    <Field
-                      type="text"
-                      name="tiktok"
-                      placeholder="TikTok Kullanıcı Adınız"
-                    />
-                    <ErrorMessage
-                      name="tiktok"
-                      component="div"
-                      className="error"
-                    />
-                  </label>
-
-                  <label htmlFor="city">
-                    <i className="ri-building-2-line"></i>
-                    <Field as="select" name="city">
-                      <option value="">Şehir Seçiniz</option>
-                      {cities.map((city, index) => (
-                        <option key={index} value={city}>
-                          {city}
-                        </option>
-                      ))}
-                    </Field>
-                    <ErrorMessage
-                      name="city"
-                      component="div"
-                      className="error"
-                    />
-                  </label>
-
-                  <label htmlFor="hearus">
-                    <i className="ri-news-line"></i>
-                    <Field as="select" name="hearus">
-                      <option value="">Bizi Nereden Duydunuz?</option>
-                      <option value="twitter">Twitter</option>
-                      <option value="facebook">Facebook</option>
-                      <option value="linkedin">LinkedIn</option>
-                    </Field>
-                    <ErrorMessage
-                      name="hearus"
-                      component="div"
-                      className="error"
-                    />
-                  </label>
-
-                  <label htmlFor="gender">
-                    <i className="ri-women-line"></i>
-                    <Field as="select" name="gender">
-                      <option value="">Cinsiyet Seçiniz</option>
-                      <option value="male">Erkek</option>
-                      <option value="female">Kadın</option>
-                    </Field>
-                    <ErrorMessage
-                      name="gender"
-                      component="div"
-                      className="error"
-                    />
-                  </label>
-                </div>
-
-                <label htmlFor="file">
-                  <i className="ri-image-line"></i>
-                  <input
-                    id="image"
-                    name="image"
-                    type="file"
-                    onChange={(event) => {
-                      setFieldValue(
-                        "image",
-                        event.currentTarget.files &&
-                          event.currentTarget.files[0]
-                      );
-                    }}
-                  />
-                </label>
-
-                <button type="submit">Yayıncı Başvurumu Gönder!</button>
-              </Form>
+            {submissionSuccess ? (
+              <button onClick={resetFormState}>Formu Tekrar Doldur</button>
+            ) : (
+              <button>Formu Doldur, Başvuru Yap!</button>
             )}
-          </Formik>
+          </div>
+          {submissionSuccess ? (
+            <SuccessComponent />
+          ) : (
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={onSubmit}
+            >
+              {({
+                setFieldValue,
+                values,
+                setFieldTouched,
+                errors,
+                touched,
+                handleSubmit,
+              }) => (
+                <Form className={isSubmitting ? "form submitting" : "form"}>
+                  <div className="form-wrapper-action">
+                    <label htmlFor="name">
+                      <i className="ri-user-line"></i>
+                      <Field
+                        type="text"
+                        name="name"
+                        placeholder="İsim & Soyisim"
+                      />
+
+                      <ErrorMessage
+                        name="name"
+                        component="div"
+                        className="error"
+                      />
+                    </label>
+
+                    <label htmlFor="email">
+                      <i className="ri-mail-line"></i>
+                      <Field
+                        type="email"
+                        name="email"
+                        placeholder="E-posta Adresiniz"
+                      />
+                      <ErrorMessage
+                        name="email"
+                        component="div"
+                        className="error"
+                      />
+                    </label>
+
+                    <label htmlFor="phone">
+                      <i className="ri-smartphone-line"></i>
+                      <Field
+                        type="tel"
+                        name="phone"
+                        placeholder="Telefon Numaranız"
+                      />
+                      <ErrorMessage
+                        name="phone"
+                        component="div"
+                        className="error"
+                      />
+                    </label>
+
+                    <label htmlFor="birthDate">
+                      <i className="ri-cake-2-line"></i>
+                      <DatePicker
+                        name="birthDate"
+                        selected={values.birthDate}
+                        onChange={(date) => setFieldValue("birthDate", date)}
+                        onBlur={() => setFieldTouched("birthDate", true)}
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="Doğum Tarihinizi Seçin"
+                        className={`form-control ${
+                          touched.birthDate && errors.birthDate
+                            ? "is-invalid"
+                            : ""
+                        }`}
+                      />
+                      <ErrorMessage
+                        name="birthDate"
+                        component="div"
+                        className="invalid-feedback"
+                      />
+                    </label>
+
+                    <label htmlFor="tiktok">
+                      <i className="ri-tiktok-fill"></i>
+                      <Field
+                        type="text"
+                        name="tiktok"
+                        placeholder="TikTok Kullanıcı Adınız"
+                      />
+                      <ErrorMessage
+                        name="tiktok"
+                        component="div"
+                        className="error"
+                      />
+                    </label>
+
+                    <label htmlFor="city">
+                      <i className="ri-building-2-line"></i>
+                      <Field as="select" name="city">
+                        <option value="">Şehir Seçiniz</option>
+                        {cities.map((city, index) => (
+                          <option key={index} value={city}>
+                            {city}
+                          </option>
+                        ))}
+                      </Field>
+                      <ErrorMessage
+                        name="city"
+                        component="div"
+                        className="error"
+                      />
+                    </label>
+
+                    <label htmlFor="hearus">
+                      <i className="ri-news-line"></i>
+                      <Field as="select" name="hearus">
+                        <option value="">Bizi Nereden Duydunuz?</option>
+                        <option value="twitter">Twitter</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="tiktok">Tiktok</option>
+                      </Field>
+                      <ErrorMessage
+                        name="hearus"
+                        component="div"
+                        className="error"
+                      />
+                    </label>
+
+                    <label htmlFor="gender">
+                      <i className="ri-women-line"></i>
+                      <Field as="select" name="gender">
+                        <option value="">Cinsiyet Seçiniz</option>
+                        <option value="erkek">Erkek</option>
+                        <option value="kadin">Kadın</option>
+                      </Field>
+                      <ErrorMessage
+                        name="gender"
+                        component="div"
+                        className="error"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="file-input">
+                    <label htmlFor="file">
+                      <i className="ri-image-line"></i>
+                      <input
+                        id="image"
+                        name="image"
+                        type="file"
+                        onChange={(event) => {
+                          setFieldValue(
+                            "image",
+                            event.currentTarget.files &&
+                              event.currentTarget.files[0]
+                          );
+                          setFieldTouched("image", true, false);
+                        }}
+                        onBlur={() => setFieldTouched("image", true)}
+                      />
+                      {touched.image && errors.image && (
+                        <div className="error">{errors.image}</div>
+                      )}
+                    </label>
+                  </div>
+
+                  <button type="submit" disabled={isSubmitting}>
+                    Yayıncı Başvurumu Gönder!
+                  </button>
+                  {isSubmitting && (
+                    <div className="spinner">
+                      <i className="ri-loader-fill" />
+                    </div>
+                  )}
+                </Form>
+              )}
+            </Formik>
+          )}
         </div>
       </Container>
       <svg

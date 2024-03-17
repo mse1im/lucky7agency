@@ -15,12 +15,10 @@ const Benefits: React.FC<IBenefitsProps> = () => {
               duration={5000}
               subtitle="İçerik / Video"
             />
-            <Counter
-              start={0}
-              end={1000000}
-              duration={5000}
-              subtitle="Beğeni"
-            />
+            <li className="counter">
+              <div className="counter-value">1M +</div>
+              <div className="counter-subtitle">Beğeni</div>
+            </li>
           </ul>
         </div>
       </Container>

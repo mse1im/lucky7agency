@@ -58,7 +58,13 @@ const Footer: React.FC<IFooterProps> = () => {
             <i className="ri-arrow-right-line"></i> Tiktok Keşfet Desteği
           </li>
           <li>
-            <i className="ri-arrow-right-line"></i> WhatsApp Destek Hattı
+            <Link
+              href="https://wa.me/908503071270"
+              rel="nofollow"
+              target="_blank"
+            >
+              <i className="ri-arrow-right-line"></i> WhatsApp Destek Hattı
+            </Link>
           </li>
           <li>
             <i className="ri-arrow-right-line"></i> TikTok İçerik
@@ -98,7 +104,11 @@ const Footer: React.FC<IFooterProps> = () => {
               </a>
             </li>
             <li>
-              <a href="tel:+0850 307 12 70">
+              <a
+                href="https://wa.me/908503071270"
+                rel="nofollow"
+                target="_blank"
+              >
                 <i className="ri-phone-fill"></i> 0850 307 12 70
               </a>
             </li>

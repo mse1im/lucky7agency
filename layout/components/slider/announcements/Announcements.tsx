@@ -1,66 +1,201 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import sh from "@/public/shadow-img.png";
+import fb from "@/public/fb3D.png";
+import yb from "@/public/youtube3D.png";
+import ig from "@/public/insta3D.png";
+import tk from "@/public/pngwing.com_.png";
+import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import "../Slider.scss";
+import ReactPlayer from "react-player";
 
 const Announcements: React.FC<ISliderProps> = () => {
-  const paginationStyle = {
-    fontSize: "18px",
-    color: "#FFD700",
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Swiper
-      cssMode={true}
-      navigation={true}
-      // pagination={{
-      //   clickable: true,
-      //   type: "custom",
-      //   renderCustom: (swiper, current, total) => {
-      //     return `
-      //       <div class="swiper-pagination-current">${current
-      //         .toString()
-      //         .padStart(2, "0")}
-      //       <div class="swiper-pagination-current-bar"></div>
-      //       </div>
-      //       <div class="swiper-pagination-total">
-      //       <div class="swiper-pagination-total-bar"></div>
-      //       ${total
-      //         .toString()
-      //         .padStart(2, "0")}
-      //       </div>`;
-      //   },
-      // }}
-      mousewheel={true}
-      keyboard={true}
-      modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-      className="announcements"
-    >
-      <SwiperSlide>
-        <div className="swiper-slide-title">
-          <h2>
-            <b>DUYURULAR</b>
-          </h2>
-        </div>
-        <h1>
-        Lucky 7 Live
-        </h1>
-        <span>
-          Show & Sohbet kategorisinde yayın yapan içerik üreticilerimiz için
-          08.03.2024-15:03.3034 tarihleri arasında , sıralamaya giren içerik
-          üreticilerimizin ajansımız tarafından düzenlenecek sürpriz isimlerle
-          PK etkinliğine katılma hakkı elde edebilecekleri ajans içi
-          etkinliğimizdir. Sıralama puanlama usulüyle belirlenecektir. Puanlar
-          ise canlı yayınlar esnasında alınan her 1 elmas=1 Puan , PK esnasında
-          her 1 elmas=2 Puan olarak hesaplanmaktadır.
-        </span>
-      </SwiperSlide>
-    </Swiper>
+    <>
+      <Swiper
+        cssMode={true}
+        navigation={true}
+        // pagination={{
+        //   clickable: true,
+        //   type: "custom",
+        //   renderCustom: (swiper, current, total) => {
+        //     return `
+        //       <div class="swiper-pagination-current">${current
+        //         .toString()
+        //         .padStart(2, "0")}
+        //       <div class="swiper-pagination-current-bar"></div>
+        //       </div>
+        //       <div class="swiper-pagination-total">
+        //       <div class="swiper-pagination-total-bar"></div>
+        //       ${total
+        //         .toString()
+        //         .padStart(2, "0")}
+        //       </div>`;
+        //   },
+        // }}
+        mousewheel={true}
+        keyboard={true}
+        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        className="announcements"
+      >
+        <SwiperSlide>
+          <div className="swiper-slide-title">
+            <h2>
+              <b>DUYURULAR</b>
+            </h2>
+          </div>
+          <h1>Lucky 7 Live</h1>
+          <span>
+            Show & Sohbet kategorisinde yayın yapan içerik üreticilerimiz için
+            08.03.2024-15:03.3034 tarihleri arasında , sıralamaya giren içerik
+            üreticilerimizin ajansımız tarafından düzenlenecek sürpriz isimlerle
+            PK etkinliğine katılma hakkı elde edebilecekleri ajans içi
+            etkinliğimizdir. Sıralama puanlama usulüyle belirlenecektir. Puanlar
+            ise canlı yayınlar esnasında alınan her 1 elmas=1 Puan , PK
+            esnasında her 1 elmas=2 Puan olarak hesaplanmaktadır.
+          </span>
+          <div className="buttons">
+            <a
+              href="https://www.instagram.com/lucky7agencyofficial/"
+              target="_blank"
+            >
+              <i className="ri-instagram-line"></i>
+            </a>
+            <a
+              href="https://www.tiktok.com/@lucky7agencyofficial?lang=tr-TR"
+              target="_blank"
+            >
+              <i className="ri-tiktok-fill"></i>
+            </a>
+            <a href="https://discord.gg/lucky7agency" target="_blank">
+              <i className="ri-discord-fill"></i>
+            </a>
+            <a onClick={() => setIsModalOpen(true)} className="dark">
+              <i className="ri-movie-2-line"></i> tanıtım videolarımız
+            </a>
+          </div>
+          <div className="main-img">
+            <Image
+              src={sh}
+              alt="Lucky 7 Agency"
+              width={70}
+              height={79}
+              className="sh vertical"
+              priority
+            />
+            <Image
+              src={fb}
+              alt="Lucky 7 Agency Facebook"
+              width={100}
+              height={101}
+              className="fb horizontal"
+              priority
+            />
+            <Image
+              src={ig}
+              alt="Lucky 7 Agency Instagram"
+              width={83}
+              height={81}
+              className="ig vertical"
+              priority
+            />
+            <Image
+              src={yb}
+              alt="Lucky 7 Agency Youtube"
+              width={122}
+              height={122}
+              className="yb rotating"
+              priority
+            />
+            <Image
+              src={tk}
+              alt="Lucky 7 Agency Tiktok"
+              width={199}
+              height={199}
+              className="tk horizontal"
+              priority
+            />
+          </div>
+        </SwiperSlide>
+      </Swiper>
+      {isModalOpen && (
+        <section className="modal">
+          <div className="modal-content">
+            <button onClick={() => setIsModalOpen(false)} className="close">
+              <i className="ri-close-line"></i>
+            </button>
+            <h2>Tanıtım Videolarımız</h2>
+            <Swiper
+              cssMode={true}
+              navigation={true}
+              mousewheel={true}
+              keyboard={true}
+              modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+              className="videos"
+            >
+              <SwiperSlide>
+                <ReactPlayer
+                  url="https://youtube.com/shorts/sj7k3Ad0Kfg?feature=share"
+                  className="react-player"
+                  playing={false}
+                  controls={true}
+                  width="90%"
+                  height="500px"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <ReactPlayer
+                  url="https://youtube.com/shorts/sTmXsUI11Ds?feature=share"
+                  className="react-player"
+                  playing={false}
+                  controls={true}
+                  width="90%"
+                  height="500px"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <ReactPlayer
+                  url="https://youtube.com/shorts/NKaLUvG_4Rw?feature=share"
+                  className="react-player"
+                  playing={false}
+                  controls={true}
+                  width="90%"
+                  height="500px"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <ReactPlayer
+                  url="https://youtube.com/shorts/-Al3pBQP-2w?feature=share"
+                  className="react-player"
+                  playing={false}
+                  controls={true}
+                  width="90%"
+                  height="500px"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <ReactPlayer
+                  url="https://youtube.com/shorts/hVRrOZVpvVE?feature=share"
+                  className="react-player"
+                  playing={false}
+                  controls={true}
+                  width="90%"
+                  height="500px"
+                />
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 export default Announcements;

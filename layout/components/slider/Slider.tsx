@@ -80,14 +80,11 @@ const Slider: React.FC<ISliderProps> = () => {
                 />
               </svg>
             </div>
-            <h1>
-              Keşfet, Yarat, Paylaş! Lucky7Agency ile <br /> TikTok'ta sınırları
-              zorla.
-            </h1>
             <span>
-              Etkileşim ve Başarı! TikTok'ta Lucky7Agency ile öne çıkın. İlgi
-              Çekici İçerikler, Etkili Çözümler ! Lucky7Agency ile TikTok'ta
-              büyük bir etki sağlayın.
+              Etkileşim ve Başarı! TikTok'ta Lucky7Agency ile öne çıkın. Keşfet
+              Paylaş! Lucky7Agency ile TikTok'ta sınırları zorla. İlgi Çekici
+              İçerikler, Etkili Çözümler ! Lucky7Agency ile TikTok'ta büyük bir
+              etki sağlayın.
             </span>
             <div className="buttons">
               <a
@@ -110,7 +107,7 @@ const Slider: React.FC<ISliderProps> = () => {
               </a>
             </div>
             <div className="main-img">
-            <Image
+              <Image
                 src={sh}
                 alt="Lucky 7 Agency"
                 width={70}

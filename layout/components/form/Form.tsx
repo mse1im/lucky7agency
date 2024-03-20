@@ -22,7 +22,6 @@ const initialValues = {
   city: "",
   hearus: "",
   gender: "",
-  image: null,
 };
 
 const validationSchema = Yup.object().shape({
@@ -36,7 +35,6 @@ const validationSchema = Yup.object().shape({
   birthDate: Yup.date().required("Doğum tarihi zorunlu").nullable(),
   tiktok: Yup.string().required("TikTok kullanıcı adı zorunlu"),
   city: Yup.string().required("Şehir seçimi zorunlu"),
-  image: Yup.mixed().required("Dosya yükleme zorunlu"),
   gender: Yup.string().required("Cinsiyet seçimi zorunlu"),
 });
 
@@ -58,7 +56,7 @@ const FormArea: React.FC<IFormProps> = () => {
     const formData = new FormData();
 
     Object.keys(values).forEach((key) => {
-      if (key !== "image") {
+      if (key !== "image" && key !=="birthDate") {
         formData.append(key, values[key]);
       }
     });
@@ -148,7 +146,6 @@ const FormArea: React.FC<IFormProps> = () => {
                 setFieldTouched,
                 errors,
                 touched,
-                handleSubmit,
               }) => (
                 <Form className={isSubmitting ? "form submitting" : "form"}>
                   <div className="form-wrapper-action">
@@ -280,28 +277,21 @@ const FormArea: React.FC<IFormProps> = () => {
                     </label>
                   </div>
 
-                  <div className="file-input">
-                    <label htmlFor="file">
-                      <i className="ri-image-line"></i>
-                      <input
-                        id="image"
-                        name="image"
-                        type="file"
-                        onChange={(event) => {
-                          setFieldValue(
-                            "image",
-                            event.currentTarget.files &&
-                              event.currentTarget.files[0]
-                          );
-                          setFieldTouched("image", true, false);
-                        }}
-                        onBlur={() => setFieldTouched("image", true)}
-                      />
-                      {touched.image && errors.image && (
-                        <div className="error">{errors.image}</div>
-                      )}
-                    </label>
-                  </div>
+                  <label htmlFor="file">
+                  <i className="ri-image-line"></i>
+                  <input
+                    id="file"
+                    name="file"
+                    type="file"
+                    onChange={(event) => {
+                      setFieldValue(
+                        "file",
+                        event.currentTarget.files &&
+                          event.currentTarget.files[0]
+                      );
+                    }}
+                  />
+                </label>
 
                   <button type="submit" disabled={isSubmitting}>
                     Yayıncı Başvurumu Gönder!

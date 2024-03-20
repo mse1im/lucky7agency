@@ -56,10 +56,10 @@ const Homepage = () => {
           <Slider />
         </Container>
       </section>
-      <Sponsors />
       <Streamers />
-      <Form />
       <TopStreamers />
+      <Form />
+      <Sponsors />
       {/* <OtherStreamers /> */}
       <AboutUs />
       <Services />

@@ -1,19 +1,55 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Container from "../container/Container";
 import "./Streamers.scss";
 import { useRouter } from "next/navigation";
 import { streamers } from "@/layout/json/streamers";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import {
+  Navigation,
+  Pagination,
+  Mousewheel,
+  Keyboard,
+  Autoplay,
+} from "swiper/modules";
+
+interface IStreamer {
+  name: string;
+  title: string;
+  backgroundImage: string;
+  socialMedia: {
+    [key: string]: {
+      link: string;
+      iconClass: string;
+    };
+  };
+}
 
 const Streamers: React.FC<IStreamersProps> = () => {
   const slideTrackRef = useRef<HTMLDivElement>(null);
+  const [streamers, setStreamers] = useState<IStreamer[]>([]);
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleSlideClick = (path: any) => {
-    router.push(`${path}`);
-  };
+  // const handleSlideClick = (path: any) => {
+  //   router.push(`${path}`);
+  // };
+
+  useLayoutEffect(() => {
+    const fetchStreamers = async () => {
+      const response = await fetch(
+        "https://lucky7agency.com.tr/json/streamers.json"
+      );
+      const data = await response.json();
+      setStreamers(data.streamers);
+    };
+
+    fetchStreamers();
+  }, []);
 
   useEffect(() => {
     let animation: Animation;
@@ -27,41 +63,33 @@ const Streamers: React.FC<IStreamersProps> = () => {
           0
         );
 
-        slideTrackRef.current.style.width = `${totalWidth}px`;
+        slideTrackRef.current.style.width = `${totalWidth * 2}px`;
 
+        // Animasyon tanımlama
         animation = slideTrackRef.current.animate(
           [
-            { transform: "translateX(0px)" },
-            { transform: `translateX(${-totalWidth / 2}px)` },
+            { transform: "translateX(0)" },
+            { transform: `translateX(-${totalWidth}px)` },
           ],
           {
-            duration: 50000,
+            duration: 10000,
             iterations: Infinity,
           }
-        );
-
-        slideTrackRef.current.addEventListener("mouseenter", () =>
-          animation.pause()
-        );
-        slideTrackRef.current.addEventListener("mouseleave", () =>
-          animation.play()
         );
       }
     };
 
     updateSlideWidth();
-    window.addEventListener("resize", updateSlideWidth);
+
+    const pauseAnimation = () => animation.pause();
+    const playAnimation = () => animation.play();
+
+    slideTrackRef.current?.addEventListener("mouseenter", pauseAnimation);
+    slideTrackRef.current?.addEventListener("mouseleave", playAnimation);
 
     return () => {
-      if (slideTrackRef.current) {
-        slideTrackRef.current.removeEventListener("mouseenter", () =>
-          animation.pause()
-        );
-        slideTrackRef.current.removeEventListener("mouseleave", () =>
-          animation.play()
-        );
-      }
-      window.removeEventListener("resize", updateSlideWidth);
+      slideTrackRef.current?.removeEventListener("mouseenter", pauseAnimation);
+      slideTrackRef.current?.removeEventListener("mouseleave", playAnimation);
     };
   }, []);
 
@@ -72,11 +100,11 @@ const Streamers: React.FC<IStreamersProps> = () => {
           <span>Lucky 7 Agency</span>
           <h2>Yayıncılarımız</h2>
         </div>
-        <div className="getastreamer">
+        {/* <div className="getastreamer">
           <Link href="/streamers">Tüm yayıncıları gör</Link>
-        </div>
+        </div> */}
       </Container>
-      <div className="slider">
+      {/* <div className="slider">
         <div className="slide-track" ref={slideTrackRef}>
           {streamers.map((streamer, index) => (
             <div
@@ -85,7 +113,6 @@ const Streamers: React.FC<IStreamersProps> = () => {
               style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.00), #140E3C), url(${streamer.backgroundImage})`,
               }}
-              onClick={() => handleSlideClick(streamer.path)}
             >
               <div className="social-media">
                 <ul>
@@ -107,7 +134,77 @@ const Streamers: React.FC<IStreamersProps> = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
+      <Swiper
+        cssMode={true}
+        mousewheel={true}
+        keyboard={true}
+        modules={[Autoplay]}
+        className="slider"
+        slidesPerView={4}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        spaceBetween={50}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+          1400: {
+            slidesPerView: 4,
+            spaceBetween: 50,
+          },
+          1800: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+          2000: {
+            slidesPerView: 6,
+            spaceBetween: 50,
+          },
+        }}
+      >
+        <div className="slider-track">
+          {streamers.map((streamer, index) => (
+            <SwiperSlide key={index}>
+              <div
+                className="slide"
+                style={{
+                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.00), #140E3C), url(${streamer.backgroundImage})`,
+                }}
+              >
+                <div className="social-media">
+                  <ul>
+                    {Object.entries(streamer.socialMedia).map(
+                      ([platform, { link, iconClass }]) => (
+                        <li key={platform}>
+                          <a href={link} target="_blank">
+                            <i className={iconClass}></i>
+                          </a>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+                <div className="info">
+                  <h2>{streamer.name}</h2>
+                  <h3>{streamer.title}</h3>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </div>
+      </Swiper>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="575"

@@ -1,0 +1,58 @@
+{
+  "streamers": [
+    {
+      "rank": 1,
+      "name": "makeuppmehtapp",
+      "title": "Yayıncı",
+      "path": "/streamer/Mehtap",
+      "detail": "Mehtap",
+      "backgroundImage": "https://lucky7agency.com.tr/img/mehtap.png",
+      "socialMedia": {
+        "instagram": {
+          "link": "https://www.instagram.com/makeupmehtapyldrm/",
+          "iconClass": "ri-instagram-line"
+        },
+        "tiktok": {
+          "link": "https://www.tiktok.com/@makeuppmehtapp",
+          "iconClass": "ri-tiktok-fill"
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "name": "ulas_cakin",
+      "title": "Yayıncı",
+      "path": "/streamer/ulas",
+      "detail": "UlasCAKIN",
+      "backgroundImage": "https://lucky7agency.com.tr/img/ulascakin.png",
+      "socialMedia": {
+        "instagram": {
+          "link": "https://www.instagram.com/ulasscakin",
+          "iconClass": "ri-instagram-line"
+        },
+        "tiktok": {
+          "link": "https://www.tiktok.com/@ulas_cakin",
+          "iconClass": "ri-tiktok-fill"
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "name": "melly34.67",
+      "title": "Yayıncı",
+      "path": "/streamer/melek",
+      "detail": "Melek",
+      "backgroundImage": "https://lucky7agency.com.tr/img/melek.png",
+      "socialMedia": {
+        "instagram": {
+          "link": "https://www.instagram.com/meleekbs1/",
+          "iconClass": "ri-instagram-line"
+        },
+        "tiktok": {
+          "link": "https://www.tiktok.com/@melly34.67",
+          "iconClass": "ri-tiktok-fill"
+        }
+      }
+    }
+  ]
+}

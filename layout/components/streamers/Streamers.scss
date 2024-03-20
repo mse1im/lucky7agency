@@ -1,7 +1,7 @@
 @import "@/app/styles/variables";
 
 .streamers {
-    background-color: var(--mainColor);
+    background-color: $dark-theme-body-color;
     position: relative;
 
     .slider {
@@ -14,6 +14,7 @@
             flex-direction: row;
             flex-wrap: nowrap;
             gap: 100px;
+            will-change: transform;
         }
 
         .slide {
@@ -127,6 +128,11 @@
                     }
                 }
             }
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
         }
     }
 

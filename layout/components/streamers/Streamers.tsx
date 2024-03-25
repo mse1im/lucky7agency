@@ -1,9 +1,8 @@
 "use client";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Container from "../container/Container";
 import "./Streamers.scss";
 import { useRouter } from "next/navigation";
-import { streamers } from "@/layout/json/streamers";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -18,6 +17,7 @@ import {
 } from "swiper/modules";
 
 interface IStreamer {
+  path(path: any): void;
   name: string;
   title: string;
   backgroundImage: string;
@@ -33,13 +33,17 @@ const Streamers: React.FC<IStreamersProps> = () => {
   const slideTrackRef = useRef<HTMLDivElement>(null);
   const [streamers, setStreamers] = useState<IStreamer[]>([]);
 
-  // const router = useRouter();
+  const router = useRouter();
+
+  const handleSlideClick = (path: any) => {
+    router.push(`/streamers`);
+  };
 
   // const handleSlideClick = (path: any) => {
-  //   router.push(`${path}`);
+  //   router.push( `${path}`);
   // };
-
-  useLayoutEffect(() => {
+  
+  useEffect(() => {
     const fetchStreamers = async () => {
       const response = await fetch(
         "https://lucky7agency.com.tr/json/streamers.json"
@@ -100,46 +104,16 @@ const Streamers: React.FC<IStreamersProps> = () => {
           <span>Lucky 7 Agency</span>
           <h2>Yayıncılarımız</h2>
         </div>
-        {/* <div className="getastreamer">
+        <div className="getastreamer">
           <Link href="/streamers">Tüm yayıncıları gör</Link>
-        </div> */}
-      </Container>
-      {/* <div className="slider">
-        <div className="slide-track" ref={slideTrackRef}>
-          {streamers.map((streamer, index) => (
-            <div
-              key={index}
-              className="slide"
-              style={{
-                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.00), #140E3C), url(${streamer.backgroundImage})`,
-              }}
-            >
-              <div className="social-media">
-                <ul>
-                  {Object.entries(streamer.socialMedia).map(
-                    ([platform, { link, iconClass }]) => (
-                      <li key={platform}>
-                        <a href={link} target="_blank">
-                          <i className={iconClass}></i>
-                        </a>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </div>
-              <div className="info">
-                <h2>{streamer.name}</h2>
-                <h3>{streamer.title}</h3>
-              </div>
-            </div>
-          ))}
         </div>
-      </div> */}
+      </Container>
       <Swiper
         cssMode={true}
         mousewheel={true}
         keyboard={true}
-        modules={[Autoplay]}
+        navigation={true}
+        modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
         className="slider"
         slidesPerView={4}
         autoplay={{
@@ -182,6 +156,7 @@ const Streamers: React.FC<IStreamersProps> = () => {
                 style={{
                   backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.00), #140E3C), url(${streamer.backgroundImage})`,
                 }}
+                onClick={() => handleSlideClick(streamer.path)}
               >
                 <div className="social-media">
                   <ul>

@@ -52,15 +52,16 @@ const Announcements: React.FC<ISliderProps> = () => {
               <b>DUYURULAR</b>
             </h2>
           </div>
-          <h1>Lucky 7 Live</h1>
+          <h1>Merhaba Değerli Lucky 7 Agency Yayıncıları</h1>
           <span>
-            Show & Sohbet kategorisinde yayın yapan içerik üreticilerimiz için
-            08.03.2024-15:03.3034 tarihleri arasında , sıralamaya giren içerik
-            üreticilerimizin ajansımız tarafından düzenlenecek sürpriz isimlerle
-            PK etkinliğine katılma hakkı elde edebilecekleri ajans içi
-            etkinliğimizdir. Sıralama puanlama usulüyle belirlenecektir. Puanlar
-            ise canlı yayınlar esnasında alınan her 1 elmas=1 Puan , PK
-            esnasında her 1 elmas=2 Puan olarak hesaplanmaktadır.
+            23 Mart'ta başlayacak
+            olan ajans içi etkinliklerimiz gelir seviyesine göre orta ve üst
+            olarak ayrılmıştır. Her iki gelir grubunun da kazananlarının
+            ödülleri aynı olup 1.'lik ödülü:6000 elmas , 2.'lik ödülü:3000 elmas
+            ve 3.'lük ödülü:1500 elmas olarak belirlenmiştir. Etkinlik sürecinde
+            yayınlarınız esnasında aldığınız elmaslara göre puanınız ve
+            sıralamanız belirlenecektir. Herkese başarılar , iyi
+            yayınlar dileriz.
           </span>
           <div className="buttons">
             <a

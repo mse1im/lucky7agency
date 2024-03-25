@@ -1,22 +1,43 @@
 "use client";
-import React from "react";
-import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import "./Streamer.scss";
-import { mainStreamers } from "@/layout/json/mainstreamers";
+
+interface IStreamer {
+  path: any;
+  name: string;
+  title: string;
+  backgroundImage: string;
+  socialMedia: {
+    [key: string]: {
+      link: string;
+      iconClass: string;
+    };
+  };
+}
 
 const AllStreamers: React.FC = () => {
   const router = useRouter();
-  const pathname = usePathname() || '';
-  const streamer = mainStreamers.find((streamer) => {
-    return streamer.path.includes(pathname);
-  });
+  const [streamers, setStreamers] = useState<IStreamer[]>([]);
+
+  useEffect(() => {
+    const fetchStreamers = async () => {
+      const response = await fetch(
+        "https://lucky7agency.com.tr/json/streamers.json"
+      );
+      const data = await response.json();
+      setStreamers(data.streamers);
+    };
+  
+    fetchStreamers();
+  }, []);
 
   const handleSlideClick = (path: any) => {
     router.push( `${path}`);
   };
   return (
     <div className="streamers-list">
-      {mainStreamers.map((streamer, index) => (
+      {streamers.map((streamer, index) => (
         <div
           key={index}
           className="streamer"

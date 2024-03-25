@@ -1,12 +1,25 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "../container/Container";
 import "./FAQ.scss";
 import FAQItem from "./FaqItem";
-import { faqData } from "@/layout/json/faq";
+interface IFaq {
+  question: any;
+  answer: any;
+}
 
 const Faq: React.FC<IFaqProps> = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [faqData, setFaqData] = useState<IFaq[]>([]);
+
+  useEffect(() => {
+    const fetchFaqData = async () => {
+      const response = await fetch("https://lucky7agency.com.tr/json/faq.json");
+      const data = await response.json();
+      setFaqData(data);
+    };
+    fetchFaqData();
+  }, []);
 
   const toggleFAQ = (index: number) => {
     if (openIndex === index) {

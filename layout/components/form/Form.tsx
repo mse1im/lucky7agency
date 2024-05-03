@@ -108,7 +108,7 @@ const FormArea: React.FC<IFormProps> = () => {
               alt="Başvuru Yap, Yayıncı Ol"
               width={122}
               height={122}
-              priority
+              loading="lazy"
             />
             <h2>Sizde Yayıncı Olun</h2>
             <p>
@@ -125,6 +125,7 @@ const FormArea: React.FC<IFormProps> = () => {
               <li>
                 Herhangi bir ay içerisinde 1500$ üzeri gelirinizin olmaması
               </li>
+              <li>Ajans daveti iletildikten sonra en az 1 defa yüzünüzü gösterdiğiniz bir yayın yapmak</li>
             </ul>
             {submissionSuccess ? (
               <button onClick={resetFormState}>Formu Tekrar Doldur</button>

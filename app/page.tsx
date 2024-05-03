@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { mainMenuItems } from "@/layout/json/menu";
+import { menuItems } from "@/layout/json/menu";
 
 const Header = React.lazy(() => import("@/layout/components/header/Header"));
 const OtherStreamers = React.lazy(
@@ -35,7 +35,7 @@ const BackToTop = React.lazy(
 );
 
 export const metadata: Metadata = {
-  title: "Lucky 7 Agency - Anasayfa",
+  title: "Lucky 7 Agency - TikTok Resmi Partner Ajansı",
   icons: {
     icon: ['/favicon.ico'],
     apple: ['/apple-touch-icon.png'],
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 const Homepage = () => {
   return (
     <>
-      <Header menuItems={mainMenuItems} />
+      <Header menuItems={menuItems} />
       <section className="slider">
         <Container>
           <Slider />

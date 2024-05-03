@@ -356,4 +356,26 @@ header {
       }
     }
   }
+
+  .language-selector {
+    position: relative;
+    background-color: #E6BC31;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .dropdown-menu {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: #E6BC31;
+      border-radius: 100px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+  }
 }

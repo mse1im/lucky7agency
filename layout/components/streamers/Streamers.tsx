@@ -42,7 +42,7 @@ const Streamers: React.FC<IStreamersProps> = () => {
   // const handleSlideClick = (path: any) => {
   //   router.push( `${path}`);
   // };
-  
+
   useEffect(() => {
     const fetchStreamers = async () => {
       const response = await fetch(
@@ -113,6 +113,8 @@ const Streamers: React.FC<IStreamersProps> = () => {
         mousewheel={true}
         keyboard={true}
         navigation={true}
+        // @ts-ignore
+        lazy={true}
         modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
         className="slider"
         slidesPerView={4}
@@ -120,7 +122,7 @@ const Streamers: React.FC<IStreamersProps> = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        spaceBetween={50}
+        spaceBetween={250}
         breakpoints={{
           320: {
             slidesPerView: 1,
@@ -136,15 +138,15 @@ const Streamers: React.FC<IStreamersProps> = () => {
           },
           1400: {
             slidesPerView: 4,
-            spaceBetween: 50,
+            spaceBetween: 250,
           },
           1800: {
             slidesPerView: 5,
-            spaceBetween: 50,
+            spaceBetween: 250,
           },
           2000: {
             slidesPerView: 6,
-            spaceBetween: 50,
+            spaceBetween: 250,
           },
         }}
       >
@@ -152,7 +154,7 @@ const Streamers: React.FC<IStreamersProps> = () => {
           {streamers.map((streamer, index) => (
             <SwiperSlide key={index}>
               <div
-                className="slide"
+                className="slide lazy"
                 style={{
                   backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.00), #140E3C), url(${streamer.backgroundImage})`,
                 }}

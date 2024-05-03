@@ -4,14 +4,22 @@ import "./Header.scss";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import React from "react";
+import { useTranslation } from "next-i18next";
 
-const Container = React.lazy(() => import("@/layout/components/container/Container"));
+const Container = React.lazy(
+  () => import("@/layout/components/container/Container")
+);
+
+const Language = React.lazy(
+  () => import("./Language")
+);
 const Nav = React.lazy(() => import("./Nav"));
 const Shadow = React.lazy(() => import("./shadow/Shadow"));
 
 const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useRouter();
+  const { t } = useTranslation();
   const goToHome = () => {
     navigate.push("/");
   };
@@ -24,7 +32,8 @@ const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  return (  
+
+  return (
     <>
       <header className={isScrolled ? "fixed" : ""}>
         <Container>
@@ -33,17 +42,29 @@ const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
             alt="Lucky 7 Agency"
             width={306}
             height={43}
-            priority
+            loading="lazy"
             onClick={goToHome}
           />
           <Nav menuItems={menuItems || []} />
           <div className="sub-menu">
-            <a href="https://wa.me/908503071270" rel="nofollow" target="_blank" className="call-us">
-              <i className="ri-customer-service-2-fill"></i> <span>bize ulaşın</span>
+            <a
+              href="https://wa.me/908503071270"
+              rel="nofollow"
+              target="_blank"
+              className="call-us"
+            >
+              <i className="ri-customer-service-2-fill"></i>{" "}
+              <span>BİZE ULAŞIN</span>
             </a>
-            <a href="https://wa.me/908503071270" rel="nofollow" target="_blank" className="call-us-mobile">
+            <a
+              href="https://wa.me/908503071270"
+              rel="nofollow"
+              target="_blank"
+              className="call-us-mobile"
+            >
               <i className="ri-customer-service-2-fill"></i>
             </a>
+            {/* <Language /> */}
           </div>
         </Container>
       </header>

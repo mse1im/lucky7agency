@@ -3,7 +3,7 @@ interface IHeaderProps {
 }
 
 interface MenuItem {
-    name: string;
-    href: string;
-    displayName: string;
-  }
+  name: string;
+  href: string;
+  displayName: string;
+}

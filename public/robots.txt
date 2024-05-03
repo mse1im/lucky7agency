@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.lucky7agency.com.tr
+
+# Sitemaps
+Sitemap: https://www.lucky7agency.com.tr/sitemap.xml

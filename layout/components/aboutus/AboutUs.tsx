@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Container from "../container/Container";
 import comment from "../../../public/image162.png";
 import img1 from "../../../public/image173.png";
@@ -70,12 +71,14 @@ const AboutUs: React.FC<IAboutUsProps> = () => {
           alt="lucky7agency"
           width={120}
           height={92}
+          loading="lazy"
           className="comment-img"
         />
         <Image
           src={img1}
           alt="lucky7agency"
           width={222}
+          loading="lazy"
           height={290}
           className="img1"
         />

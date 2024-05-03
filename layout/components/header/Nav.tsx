@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "./Header.scss";
 import React from "react";
+import Link from "next/link";
 
 const Container = React.lazy(() => import("../container/Container"));
 
@@ -38,7 +39,7 @@ const Nav: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
               className={activeMenuItem === item.name ? "active" : ""}
               onClick={() => handleMenuItemClick(item.name)}
             >
-              <a href={item.href}>{item.displayName}</a>
+              <Link href={item.href}>{item.displayName}</Link>
             </li>
           ))}
         </Container>
@@ -51,7 +52,7 @@ const Nav: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
             className={activeMenuItem === item.name ? "active" : ""}
             onClick={() => handleMenuItemClick(item.name)}
           >
-            <a href={item.href}>{item.displayName}</a>
+            <Link href={item.href}>{item.displayName}</Link>
           </li>
         ))}
       </ul>

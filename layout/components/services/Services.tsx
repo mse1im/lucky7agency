@@ -21,6 +21,7 @@ const Services: React.FC<IServicesProps> = () => {
             <div className="info">
               <Image
                 src={services1}
+                loading="lazy"
                 alt="Tiktok Keşfet Desteği"
                 width={90}
                 height={90}
@@ -44,6 +45,7 @@ const Services: React.FC<IServicesProps> = () => {
                 src={services2}
                 alt="Tiktok Keşfet Desteği"
                 width={90}
+                loading="lazy"
                 height={90}
               />
               <h3>WhatsApp Destek Hattı</h3>
@@ -64,6 +66,7 @@ const Services: React.FC<IServicesProps> = () => {
                 src={services3}
                 alt="Tiktok Keşfet Desteği"
                 width={90}
+                loading="lazy"
                 height={90}
               />
               <h3>TikTok İçerik Üreticilerimize Ücretsiz Danışmanlık</h3>

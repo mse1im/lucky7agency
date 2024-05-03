@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import sh from "@/public/shadow-img.png";
 import fb from "@/public/fb3D.png";
@@ -17,6 +17,14 @@ import ReactPlayer from "react-player";
 
 const Announcements: React.FC<ISliderProps> = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [eventData, setEventData] = useState({ title: "", description: "" });
+
+  useEffect(() => {
+    fetch('https://lucky7agency.com.tr/json/slider.json')
+      .then(response => response.json())
+      .then(data => setEventData(data))
+      .catch(error => console.error('Error loading the events data:', error));
+  }, []);
 
   return (
     <>
@@ -52,17 +60,8 @@ const Announcements: React.FC<ISliderProps> = () => {
               <b>DUYURULAR</b>
             </h2>
           </div>
-          <h1>Merhaba Değerli Lucky 7 Agency Yayıncıları</h1>
-          <span>
-            23 Mart'ta başlayacak
-            olan ajans içi etkinliklerimiz gelir seviyesine göre orta ve üst
-            olarak ayrılmıştır. Her iki gelir grubunun da kazananlarının
-            ödülleri aynı olup 1.'lik ödülü:6000 elmas , 2.'lik ödülü:3000 elmas
-            ve 3.'lük ödülü:1500 elmas olarak belirlenmiştir. Etkinlik sürecinde
-            yayınlarınız esnasında aldığınız elmaslara göre puanınız ve
-            sıralamanız belirlenecektir. Herkese başarılar , iyi
-            yayınlar dileriz.
-          </span>
+          <h1>{eventData.title}</h1>
+          <span dangerouslySetInnerHTML={{ __html: eventData.description }}></span>
           <div className="buttons">
             <a
               href="https://www.instagram.com/lucky7agencyofficial/"
@@ -88,41 +87,41 @@ const Announcements: React.FC<ISliderProps> = () => {
               src={sh}
               alt="Lucky 7 Agency"
               width={70}
+              loading="lazy"
               height={79}
               className="sh vertical"
-              priority
             />
             <Image
               src={fb}
               alt="Lucky 7 Agency Facebook"
               width={100}
+              loading="lazy"
               height={101}
               className="fb horizontal"
-              priority
             />
             <Image
               src={ig}
               alt="Lucky 7 Agency Instagram"
               width={83}
+              loading="lazy"
               height={81}
               className="ig vertical"
-              priority
             />
             <Image
               src={yb}
+              loading="lazy"
               alt="Lucky 7 Agency Youtube"
               width={122}
               height={122}
               className="yb rotating"
-              priority
             />
             <Image
               src={tk}
+              loading="lazy"
               alt="Lucky 7 Agency Tiktok"
               width={199}
               height={199}
               className="tk horizontal"
-              priority
             />
           </div>
         </SwiperSlide>

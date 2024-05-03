@@ -20,8 +20,8 @@ const Footer: React.FC<IFooterProps> = () => {
             src={darkLogo}
             alt="Lucky 7 Agency"
             width={387}
+            loading="lazy"
             height={54}
-            priority
           />
           <p>
             Tecrübeli yönetim ekibimiz, tüm sosyal medya platformlarında
@@ -121,6 +121,7 @@ const Footer: React.FC<IFooterProps> = () => {
           src={comment}
           alt="comment"
           width={74}
+          loading="lazy"
           height={56}
           className="comment-img"
         />

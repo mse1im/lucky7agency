@@ -20,6 +20,7 @@ interface IStreamer {
 const TopStreamers: React.FC<IStreamersProps> = () => {
   const [streamers, setStreamers] = useState<IStreamer[]>([]);
   const [streamers2, setStreamers2] = useState<IStreamer[]>([]);
+  const [title, setTitle] = useState<string | undefined>();
 
   const getClassNameForRank = (rank: number) => {
     switch (rank) {
@@ -35,7 +36,6 @@ const TopStreamers: React.FC<IStreamersProps> = () => {
   };
 
   useEffect(() => {
-
     const fetchStreamers = async () => {
       const response = await fetch(
         "https://lucky7agency.com.tr/json/show.json"
@@ -50,6 +50,7 @@ const TopStreamers: React.FC<IStreamersProps> = () => {
       );
       const data = await response.json();
       setStreamers2(data.streamers);
+      setTitle(data.title);
     };
 
     fetchStreamers();
@@ -76,7 +77,7 @@ const TopStreamers: React.FC<IStreamersProps> = () => {
       <Container>
         <div className="title">
           <span>Lucky 7 Agency</span>
-          <h2>ŞUBAT TOP 3</h2>
+          <h2>{title}</h2>
         </div>
       </Container>
       <div className="slider">

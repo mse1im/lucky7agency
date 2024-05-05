@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 import Container from "../container/Container";
 import "./Streamers.scss";
 import { useRouter } from "next/navigation";
@@ -35,9 +35,11 @@ interface StreamerResponse {
 }
 
 async function fetchStreamers(): Promise<StreamerResponse> {
-  const response = await fetch("https://lucky7agency.com.tr/json/streamers.json");
+  const response = await fetch(
+    "https://lucky7agency.com.tr/json/streamers.json"
+  );
   if (!response.ok) {
-    throw new Error('Network response was not ok');
+    throw new Error("Network response was not ok");
   }
   return response.json() as Promise<StreamerResponse>;
 }
@@ -50,11 +52,18 @@ const Streamers: React.FC<IStreamersProps> = () => {
   };
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ['streamers'],
-    queryFn: fetchStreamers
+    queryKey: ["streamers"],
+    queryFn: fetchStreamers,
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <>
+        <div className="spinner">
+          <i className="ri-loader-fill" />
+        </div>
+      </>
+    );
   if (error instanceof Error) return <div>Error: {error.message}</div>;
 
   return (

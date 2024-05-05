@@ -1,173 +1,192 @@
 @import "@/app/styles/variables";
 
 .streamers {
-    background-color: $dark-theme-body-color;
+  background-color: $dark-theme-body-color;
+  position: relative;
+
+  .slider {
+    overflow: hidden;
+    z-index: 1;
     position: relative;
 
-    .slider {
-        overflow: hidden;
-        z-index: 1;
-        position: relative;
+    .slide-track {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 100px;
+      will-change: transform;
+    }
 
-        .slide-track {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            gap: 100px;
-            will-change: transform;
-        }
+    .slide {
+      width: 340px;
+      min-width: 340px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 340px;
+      border-radius: 15px;
+      opacity: 1;
+      padding: 10px 20px 40px 20px;
+      position: relative;
+      justify-content: space-between;
+      transition: all 0.5s ease-in-out;
+      background-size: contain;
 
-        .slide {
-            width: 340px;
-            min-width: 340px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            height: 340px;
-            border-radius: 15px;
-            opacity: 1;
-            padding: 10px 20px 40px 20px;
-            position: relative;
-            justify-content: space-between;
-            transition: all .5s ease-in-out;
-            background-size: contain;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) -21.18%,
+          #c09815 100%
+        );
+        border-radius: 15px;
+      }
 
-            &::after {
-                content:'';
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 100%;
-                width: 100%;
-                opacity: 0;
-                background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) -21.18%, #C09815 100%);
-                border-radius: 15px;
-            }
+      .social-media {
+        visibility: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-self: flex-end;
+        height: 40px;
+        width: auto;
+        border-radius: 100px;
+        background-color: #e6bc31;
+        opacity: 0;
+        z-index: 9999;
+        transition: opacity, background-color, 0.5s ease-in-out;
 
-            .social-media {
-                visibility: hidden;
-                display: flex;
-                justify-content: space-between;
-                align-self: flex-end;
-                height: 40px;
-                width: auto;
-                border-radius: 100px;
-                background-color: #E6BC31;
-                opacity: 0;
-                z-index: 9999;
-                transition: opacity, background-color, .5s ease-in-out;
+        ul {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          padding: 0 0.8rem;
+          gap: 8px;
 
-                ul {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    width: 100%;
-                    padding: 0 .8rem;
-                    gap: 8px;
-
-                    li {
-                        width: 28px;
-                        height: 28px;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        a {
-                            i {
-                                color: $white;
-                                font-size: 20px;
-                                transition: color .5s ease-in-out;
-                            }
-                        }
-
-                        &:hover {
-                            a {
-                                i {
-                                    color: white;
-                                }
-                            }
-                            background-color: black;
-                        }
-                    }
-                }
-            }
-
-            &:hover {
-                .social-media {
-                    visibility: visible;
-                    opacity: 1;
-                }
-
-                &::after {
-                    opacity: 0.7;
-                }
-            }
-
-            .info {
-                z-index: 9;
-                h2,
-                h3 {
-                    color: $orange;
-                    font-size: 35px;
-                    font-style: normal;
-                    font-weight: 900;
-                    line-height: 36px;
-                }
-
-                h3 {
-                    font-size: 20px;
-                    font-weight: 400;
-                    color:$white;
-                }
-            }
-
-            &:hover {
-                .info {
-                    h2 {
-                        color:$white;
-                    }
-                }
-            }
-        }
-
-        .swiper-slide {
+          li {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-        }
-    }
-
-    svg {
-        position: absolute;
-        top: -4%;
-        z-index: 0;
-        right: -3%;
-        transform: rotate(270deg);
-    }
-
-    >.container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
-        .title {
-            margin: 0 auto;
-        }
-
-        .getastreamer {
-            margin-left: 0;
-            z-index: 2;
+            justify-content: center;
             a {
-                @include button;
-
-                &:hover {
-                    background-color: #222327;
-                    color:$orange;
-                }
+              i {
+                color: $white;
+                font-size: 20px;
+                transition: color 0.5s ease-in-out;
+              }
             }
+
+            &:hover {
+              a {
+                i {
+                  color: white;
+                }
+              }
+              background-color: black;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        .social-media {
+          visibility: visible;
+          opacity: 1;
         }
 
-        @media (width >=$md) {
-            flex-direction: row;
+        &::after {
+          opacity: 0.7;
         }
+      }
+
+      .info {
+        z-index: 9;
+        h2,
+        h3 {
+          color: $orange;
+          font-size: 35px;
+          font-style: normal;
+          font-weight: 900;
+          line-height: 36px;
+        }
+
+        h3 {
+          font-size: 20px;
+          font-weight: 400;
+          color: $white;
+        }
+      }
+
+      &:hover {
+        .info {
+          h2 {
+            color: $white;
+          }
+        }
+      }
     }
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: -4%;
+    z-index: 0;
+    right: -3%;
+    transform: rotate(270deg);
+  }
+
+  > .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+      margin: 0 auto;
+    }
+
+    .getastreamer {
+      margin-left: 0;
+      z-index: 2;
+      a {
+        @include button;
+
+        &:hover {
+          background-color: #222327;
+          color: $orange;
+        }
+      }
+    }
+
+    @media (width >=$md) {
+      flex-direction: row;
+    }
+  }
 }
+
+.spinner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    background-color: #1e1f236b;
+    z-index: 9;
+
+    i {
+      animation: spin 2s linear infinite;
+    }
+  }

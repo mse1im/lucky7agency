@@ -1,8 +1,7 @@
-import React from 'react';
-import { LanguageProvider } from '../context/Language';
-import { Titillium_Web } from 'next/font/google';
-import './styles/global.scss';
-import 'remixicon/fonts/remixicon.css';
+import React from "react";
+import { Titillium_Web } from "next/font/google";
+import "./styles/global.scss";
+import "remixicon/fonts/remixicon.css";
 
 interface Metadata {
   title: string;
@@ -35,15 +34,16 @@ const titillum = Titillium_Web({
   variable: "--font-golos",
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <LanguageProvider>
-      <html lang="tr">
-        <body data-theme="dark" className={titillum.className}>
-          {children}
-        </body>
-      </html>
-    </LanguageProvider>
+    <html lang="tr">
+      <body data-theme="dark" className={titillum.className}>
+        {children}
+      </body>
+    </html>
   );
 }

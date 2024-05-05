@@ -2,7 +2,6 @@
 "use client";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import vector from "@/public/Vector.png";
 import sh from "@/public/shadow-img.png";
 import fb from "@/public/fb3D.png";
 import yb from "@/public/youtube3D.png";
@@ -43,8 +42,6 @@ const Slider: React.FC<ISliderProps> = () => {
         <Swiper
           cssMode={true}
           navigation={true}
-          // @ts-ignore
-          lazy={true}
           mousewheel={true}
           keyboard={true}
           modules={[Navigation, Pagination, Mousewheel, Keyboard]}

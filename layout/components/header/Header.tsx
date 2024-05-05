@@ -4,22 +4,17 @@ import "./Header.scss";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import React from "react";
-import { useTranslation } from "next-i18next";
 
 const Container = React.lazy(
   () => import("@/layout/components/container/Container")
 );
 
-const Language = React.lazy(
-  () => import("./Language")
-);
 const Nav = React.lazy(() => import("./Nav"));
 const Shadow = React.lazy(() => import("./shadow/Shadow"));
 
 const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useRouter();
-  const { t } = useTranslation();
   const goToHome = () => {
     navigate.push("/");
   };
@@ -64,7 +59,6 @@ const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
             >
               <i className="ri-customer-service-2-fill"></i>
             </a>
-            {/* <Language /> */}
           </div>
         </Container>
       </header>

@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useQuery } from '@tanstack/react-query';
 import Container from "../container/Container";
 import "./Streamers.scss";
 import { useRouter } from "next/navigation";
@@ -16,86 +17,45 @@ import {
   Autoplay,
 } from "swiper/modules";
 
+interface ISocialMedia {
+  link: string;
+  iconClass: string;
+}
+
 interface IStreamer {
-  path(path: any): void;
+  path: string;
   name: string;
   title: string;
   backgroundImage: string;
-  socialMedia: {
-    [key: string]: {
-      link: string;
-      iconClass: string;
-    };
-  };
+  socialMedia: Record<string, ISocialMedia>;
+}
+
+interface StreamerResponse {
+  streamers: IStreamer[];
+}
+
+async function fetchStreamers(): Promise<StreamerResponse> {
+  const response = await fetch("https://lucky7agency.com.tr/json/streamers.json");
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json() as Promise<StreamerResponse>;
 }
 
 const Streamers: React.FC<IStreamersProps> = () => {
-  const slideTrackRef = useRef<HTMLDivElement>(null);
-  const [streamers, setStreamers] = useState<IStreamer[]>([]);
-
   const router = useRouter();
 
-  const handleSlideClick = (path: any) => {
-    router.push(`/streamers`);
+  const handleSlideClick = (path: string) => {
+    router.push(path);
   };
 
-  // const handleSlideClick = (path: any) => {
-  //   router.push( `${path}`);
-  // };
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['streamers'],
+    queryFn: fetchStreamers
+  });
 
-  useEffect(() => {
-    const fetchStreamers = async () => {
-      const response = await fetch(
-        "https://lucky7agency.com.tr/json/streamers.json"
-      );
-      const data = await response.json();
-      setStreamers(data.streamers);
-    };
-
-    fetchStreamers();
-  }, []);
-
-  useEffect(() => {
-    let animation: Animation;
-    const updateSlideWidth = () => {
-      if (slideTrackRef.current) {
-        const slides = Array.from(
-          slideTrackRef.current.children as HTMLCollectionOf<HTMLElement>
-        );
-        const totalWidth = slides.reduce(
-          (total, slide) => total + slide.offsetWidth,
-          0
-        );
-
-        slideTrackRef.current.style.width = `${totalWidth * 2}px`;
-
-        // Animasyon tanımlama
-        animation = slideTrackRef.current.animate(
-          [
-            { transform: "translateX(0)" },
-            { transform: `translateX(-${totalWidth}px)` },
-          ],
-          {
-            duration: 10000,
-            iterations: Infinity,
-          }
-        );
-      }
-    };
-
-    updateSlideWidth();
-
-    const pauseAnimation = () => animation.pause();
-    const playAnimation = () => animation.play();
-
-    slideTrackRef.current?.addEventListener("mouseenter", pauseAnimation);
-    slideTrackRef.current?.addEventListener("mouseleave", playAnimation);
-
-    return () => {
-      slideTrackRef.current?.removeEventListener("mouseenter", pauseAnimation);
-      slideTrackRef.current?.removeEventListener("mouseleave", playAnimation);
-    };
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
+  if (error instanceof Error) return <div>Error: {error.message}</div>;
 
   return (
     <section className="streamers" id="streamers">
@@ -151,7 +111,7 @@ const Streamers: React.FC<IStreamersProps> = () => {
         }}
       >
         <div className="slider-track">
-          {streamers.map((streamer, index) => (
+          {data?.streamers.map((streamer, index) => (
             <SwiperSlide key={index}>
               <div
                 className="slide lazy"

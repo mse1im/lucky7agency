@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# index ve streamers sayfaları için özel yönlendirme
+RewriteRule ^index/?$ index.html [L]
+RewriteRule ^streamers/?$ streamers.html [L]
+RewriteRule ^services/?$ services.html [L]
+RewriteRule ^aboutus/?$ aboutus.html [L]
+RewriteRule ^contactus/?$ contactus.html [L]
+
+# streamer/[id] sayfaları için dinamik yönlendirme
+# Örnek: /streamer/john-doe isteği streamer/john-doe.html'e yönlendirilir
+RewriteRule ^streamer/(.+)/?$ streamer/$1.html [L]
+
+# Eğer dosya/dizin bulunamıyorsa, index.html'e yönlendir
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]

@@ -10,11 +10,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.34.1",
     "axios": "^1.6.7",
     "date-fns": "^3.5.0",
     "formik": "^2.4.5",
     "next": "14.0.4",
     "next-i18next": "^15.3.0",
+    "next-seo": "^6.5.0",
     "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-datepicker": "^6.1.0",

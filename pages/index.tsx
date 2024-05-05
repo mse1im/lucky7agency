@@ -1,6 +1,6 @@
 import React from "react";
-import type { Metadata } from "next";
 import { menuItems } from "@/layout/json/menu";
+import Head from "next/head";
 
 const Header = React.lazy(() => import("@/layout/components/header/Header"));
 const OtherStreamers = React.lazy(
@@ -34,22 +34,14 @@ const BackToTop = React.lazy(
   () => import("@/layout/components/backtotop/BackToTop")
 );
 
-export const metadata: Metadata = {
-  title: "Lucky 7 Agency - TikTok Resmi Partner Ajansı",
-  icons: {
-    icon: ['/favicon.ico'],
-    apple: ['/apple-touch-icon.png'],
-    shortcut: ['/apple-touch-icon.png'],
-  },
-  keywords:
-    "TikTok Ajansı, TikTok Yayıncı Destek, TikTok Canlı Yayın Danışmanlığı, Sosyal Medya Ajansı, TikTok Kitle Geliştirme, TikTok İçerik Stratejisi, TikTok Keşfet Desteği, 24/7 TikTok Destek, Ücretsiz TikTok Danışmanlık, TikTok Algoritma İpuçları",
-  description:
-    "Lucky7 Agency, TikTok yayıncılarına ve canlı yayıncılara özel danışmanlık, 24/7 destek ve içerik stratejileri sunarak markalarınızın sosyal medyada büyümesine katkıda bulunur. Ücretsiz danışmanlık hizmetleriyle, TikTokta keşfedilmenizi ve kitle geliştirmenizi sağlar.",
-};
-
 const Homepage = () => {
   return (
     <>
+      <Head>
+        <title>Lucky 7 Agency - Lucky 7 Agency - TikTok Resmi Partner Ajansı</title>
+        <meta name="description" content="Lucky7 Agency, TikTok yayıncılarına ve canlı yayıncılara özel danışmanlık, 24/7 destek ve içerik stratejileri sunarak markalarınızın sosyal medyada büyümesine katkıda bulunur. Ücretsiz danışmanlık hizmetleriyle, TikTokta keşfedilmenizi ve kitle geliştirmenizi sağlar." />
+        <meta name="keywords" content="TikTok Ajansı, TikTok Yayıncı Destek, TikTok Canlı Yayın Danışmanlığı, Sosyal Medya Ajansı, TikTok Kitle Geliştirme, TikTok İçerik Stratejisi, TikTok Keşfet Desteği, 24/7 TikTok Destek, Ücretsiz TikTok Danışmanlık, TikTok Algoritma İpuçları" />
+      </Head>
       <Header menuItems={menuItems} />
       <section className="slider">
         <Container>

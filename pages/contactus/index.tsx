@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { menuItems } from "@/layout/json/menu";
-import { Metadata } from "next";
+import Head from "next/head";
+import Form from "@/layout/components/form/Form";
 
 const Header = dynamic(() => import("@/layout/components/header/Header"));
 const Container = dynamic(
@@ -8,26 +9,16 @@ const Container = dynamic(
 );
 const Footer = dynamic(() => import("@/layout/components/footer/Footer"));
 
-export const metadata: Metadata = {
-  title: "Lucky 7 Agency - Hakkımızda",
-  icons: {
-    icon: ['/favicon.ico'],
-    apple: ['/apple-touch-icon.png'],
-    shortcut: ['/apple-touch-icon.png'],
-  },
-  keywords:`hizmetlerimiz`,
-  description:`hizmetlerimiz`
-};
-
-
 export default function Page() {
-
   return (
     <>
+      <Head>
+        <title>Lucky 7 Agency - İletişim</title>
+        <meta name="description" content="İletişim" />
+        <meta name="keywords" content="İletişim" />
+      </Head>
       <Header menuItems={menuItems} />
-      <Container>
-        deneme
-      </Container>
+      <Form />
       <Footer />
     </>
   );

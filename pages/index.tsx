@@ -20,7 +20,15 @@ const Streamers = React.lazy(
 
 const Homepage = () => {
   return (
-    <>
+    <Suspense
+    fallback={
+      <>
+        <div className="spinner">
+          <i className="ri-loader-fill" />
+        </div>
+      </>
+    }
+  >
       <Head>
         <title>
           Lucky 7 Agency - Lucky 7 Agency - TikTok Resmi Partner Ajansı
@@ -40,17 +48,7 @@ const Homepage = () => {
           <Slider />
         </Container>
       </section>
-      <Suspense
-        fallback={
-          <>
-            <div className="spinner">
-              <i className="ri-loader-fill" />
-            </div>
-          </>
-        }
-      >
         <Streamers />
-      </Suspense>
       <TopStreamers />
       <Form />
       <Sponsors />
@@ -61,7 +59,7 @@ const Homepage = () => {
       <Faq />
       <Footer />
       <BackToTop />
-    </>
+    </Suspense>
   );
 };
 export default Homepage;

@@ -2,7 +2,6 @@
 import Container from "../container/Container";
 import comment from "../../../public/image162.png";
 import img1 from "../../../public/image173.png";
-import img2 from "../../../public/image174.png";
 import Image from "next/image";
 import "./AboutUs.scss";
 

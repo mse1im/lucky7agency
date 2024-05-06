@@ -1,7 +1,7 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./Streamer.scss";
-import useSWR from "swr";
 
 interface IStreamer {
   path: any;
@@ -16,32 +16,28 @@ interface IStreamer {
   };
 }
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 const AllStreamers: React.FC = () => {
   const router = useRouter();
-  const { data, error } = useSWR(
-    "https://lucky7agency.com.tr/json/streamers.json",
-    fetcher
-  );
+  const [streamers, setStreamers] = useState<IStreamer[]>([]);
 
-  if (error) return <div>Failed to load streamers.</div>;
-  if (!data)
-    return (
-      <>
-        <div className="spinner">
-          <i className="ri-loader-fill" />
-        </div>
-      </>
-    );
+  useEffect(() => {
+    const fetchStreamers = async () => {
+      const response = await fetch(
+        "https://lucky7agency.com.tr/json/streamers.json"
+      );
+      const data = await response.json();
+      setStreamers(data.streamers);
+    };
+  
+    fetchStreamers();
+  }, []);
 
   const handleSlideClick = (path: any) => {
-    router.push(`${path}`);
+    router.push( `${path}`);
   };
-
   return (
     <div className="streamers-list">
-      {data.streamers.map((streamer: IStreamer, index: number) => (
+      {streamers.map((streamer, index) => (
         <div
           key={index}
           className="streamer"

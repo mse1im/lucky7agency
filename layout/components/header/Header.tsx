@@ -37,8 +37,8 @@ const Header: React.FC<IHeaderProps> = ({ menuItems }) => {
             alt="Lucky 7 Agency"
             width={306}
             height={43}
-            loading="lazy"
             onClick={goToHome}
+            priority
           />
           <Nav menuItems={menuItems || []} />
           <div className="sub-menu">

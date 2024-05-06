@@ -1,50 +1,43 @@
-import React from "react";
-import { useQuery } from '@tanstack/react-query';
+"use client";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./Streamer.scss";
 
-interface ISocialMedia {
-  link: string;
-  iconClass: string;
-}
-
 interface IStreamer {
-  path: string;
+  path: any;
   name: string;
   title: string;
   backgroundImage: string;
-  socialMedia: Record<string, ISocialMedia>;
-}
-
-interface StreamerResponse {
-  streamers: IStreamer[];
-}
-
-async function fetchStreamers(): Promise<StreamerResponse> {
-  const response = await fetch("https://lucky7agency.com.tr/json/streamers.json");
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return response.json() as Promise<StreamerResponse>;
+  socialMedia: {
+    [key: string]: {
+      link: string;
+      iconClass: string;
+    };
+  };
 }
 
 const AllStreamers: React.FC = () => {
   const router = useRouter();
-  const { data, error, isLoading } = useQuery({
-    queryKey: ['streamers'],
-    queryFn: fetchStreamers
-  });
+  const [streamers, setStreamers] = useState<IStreamer[]>([]);
 
-  const handleSlideClick = (path: string) => {
-    router.push(path);
+  useEffect(() => {
+    const fetchStreamers = async () => {
+      const response = await fetch(
+        "https://lucky7agency.com.tr/json/streamers.json"
+      );
+      const data = await response.json();
+      setStreamers(data.streamers);
+    };
+  
+    fetchStreamers();
+  }, []);
+
+  const handleSlideClick = (path: any) => {
+    router.push( `${path}`);
   };
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error instanceof Error) return <div>Error: {error.message}</div>;
-
   return (
     <div className="streamers-list">
-      {data?.streamers.map((streamer, index) => (
+      {streamers.map((streamer, index) => (
         <div
           key={index}
           className="streamer"
@@ -55,13 +48,15 @@ const AllStreamers: React.FC = () => {
         >
           <div className="social-media">
             <ul>
-              {Object.entries(streamer.socialMedia).map(([platform, { link, iconClass }]) => (
-                <li key={platform}>
-                  <a href={link} target="_blank" rel="noopener noreferrer">
-                    <i className={iconClass}></i>
-                  </a>
-                </li>
-              ))}
+              {Object.entries(streamer.socialMedia).map(
+                ([platform, { link, iconClass }]) => (
+                  <li key={platform}>
+                    <a href={link} target="_blank" rel="noopener noreferrer">
+                      <i className={iconClass}></i>
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
           <div className="info">

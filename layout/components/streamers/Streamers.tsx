@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef, useState } from "react";
 import Container from "../container/Container";
 import "./Streamers.scss";
 import { useRouter } from "next/navigation";
@@ -17,54 +16,39 @@ import {
   Autoplay,
 } from "swiper/modules";
 
-interface ISocialMedia {
-  link: string;
-  iconClass: string;
-}
-
 interface IStreamer {
-  path: string;
+  path(path: any): void;
   name: string;
   title: string;
   backgroundImage: string;
-  socialMedia: Record<string, ISocialMedia>;
-}
-
-interface StreamerResponse {
-  streamers: IStreamer[];
-}
-
-async function fetchStreamers(): Promise<StreamerResponse> {
-  const response = await fetch(
-    "https://lucky7agency.com.tr/json/streamers.json"
-  );
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return response.json() as Promise<StreamerResponse>;
+  socialMedia: {
+    [key: string]: {
+      link: string;
+      iconClass: string;
+    };
+  };
 }
 
 const Streamers: React.FC<IStreamersProps> = () => {
+  const [streamers, setStreamers] = useState<IStreamer[]>([]);
+
   const router = useRouter();
 
-  const handleSlideClick = (path: string) => {
-    router.push(path);
+  const handleSlideClick = (path: any) => {
+    router.push( `${path}`);
   };
+  
+  useEffect(() => {
+    const fetchStreamers = async () => {
+      const response = await fetch(
+        "https://lucky7agency.com.tr/json/streamers.json"
+      );
+      const data = await response.json();
+      setStreamers(data.streamers);
+    };
 
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["streamers"],
-    queryFn: fetchStreamers,
-  });
-
-  if (isLoading)
-    return (
-      <>
-        <div className="spinner">
-          <i className="ri-loader-fill" />
-        </div>
-      </>
-    );
-  if (error instanceof Error) return <div>Error: {error.message}</div>;
+    fetchStreamers();
+  }, []);
 
   return (
     <section className="streamers" id="streamers">
@@ -82,8 +66,6 @@ const Streamers: React.FC<IStreamersProps> = () => {
         mousewheel={true}
         keyboard={true}
         navigation={true}
-        // @ts-ignore
-        lazy={true}
         modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
         className="slider"
         slidesPerView={4}
@@ -91,7 +73,7 @@ const Streamers: React.FC<IStreamersProps> = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        spaceBetween={250}
+        spaceBetween={50}
         breakpoints={{
           320: {
             slidesPerView: 1,
@@ -103,7 +85,7 @@ const Streamers: React.FC<IStreamersProps> = () => {
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 50,
+            spaceBetween: 250,
           },
           1400: {
             slidesPerView: 4,
@@ -120,10 +102,10 @@ const Streamers: React.FC<IStreamersProps> = () => {
         }}
       >
         <div className="slider-track">
-          {data?.streamers.map((streamer, index) => (
+          {streamers.map((streamer, index) => (
             <SwiperSlide key={index}>
               <div
-                className="slide lazy"
+                className="slide"
                 style={{
                   backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.00), #140E3C), url(${streamer.backgroundImage})`,
                 }}

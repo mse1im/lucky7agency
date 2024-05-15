@@ -33,23 +33,23 @@ const Footer = React.lazy(() => import("@/layout/components/footer/Footer"));
 const BackToTop = React.lazy(
   () => import("@/layout/components/backtotop/BackToTop")
 );
-
+import SEO from '../utils/seoconfig';
+import { NextSeo } from "next-seo";
 
 const Homepage = () => {
   return (
     <Suspense
-    fallback={
-      <>
-        <div className="spinner">
-          <i className="ri-loader-fill" />
-        </div>
-      </>
-    }
-  >
+      fallback={
+        <>
+          <div className="spinner">
+            <i className="ri-loader-fill" />
+          </div>
+        </>
+      }
+    >
+      <NextSeo {...SEO} />
       <Head>
-        <title>
-          Lucky 7 Agency - Lucky 7 Agency - TikTok Resmi Partner Ajansı
-        </title>
+        <title>TikTok Resmi Partner Ajansı - Lucky 7 Agency</title>
         <meta
           name="description"
           content="Lucky7 Agency, TikTok yayıncılarına ve canlı yayıncılara özel danışmanlık, 24/7 destek ve içerik stratejileri sunarak markalarınızın sosyal medyada büyümesine katkıda bulunur. Ücretsiz danışmanlık hizmetleriyle, TikTokta keşfedilmenizi ve kitle geliştirmenizi sağlar."
@@ -65,7 +65,7 @@ const Homepage = () => {
           <Slider />
         </Container>
       </section>
-        <Streamers />
+      <Streamers />
       <TopStreamers />
       <Form />
       <Sponsors />

@@ -14,8 +14,8 @@ export default function Page() {
     <>
       <Head>
         <title>Lucky 7 Agency - İletişim</title>
-        <meta name="description" content="İletişim" />
-        <meta name="keywords" content="İletişim" />
+        <meta name="description" content="WhatsApp Destek Hattı tüm yayıncılarımız içi hizmet vermektedir. Yayıncılarımız yaşadıkları problemlerle ilgili sonuçları ve TikTtok ile ilgili tüm gelişmeleri anlık olarak WhatsApp üzerinden TikTok temsilcilerimizden öğrenebiliyorlar." />
+        <meta name="keywords" content="TikTok Ajansı, TikTok Yayıncı Destek, TikTok Canlı Yayın Danışmanlığı, Sosyal Medya Ajansı, TikTok Kitle Geliştirme, TikTok İçerik Stratejisi, TikTok Keşfet Desteği, 24/7 TikTok Destek, Ücretsiz TikTok Danışmanlık, TikTok Algoritma İpuçları" />
       </Head>
       <Header menuItems={menuItems} />
       <Form />

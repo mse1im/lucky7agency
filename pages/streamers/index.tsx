@@ -23,7 +23,7 @@ export default function Streamers() {
           name="description"
           content={`Lucky7 Agency Yayıncıları ${streamerNames}`}
         />
-        <meta name="keywords" content={streamerNames} />
+        <meta name="keywords" content={`${streamerNames} TikTok Ajansı, TikTok Yayıncı Destek, TikTok Canlı Yayın Danışmanlığı, Sosyal Medya Ajansı, TikTok Kitle Geliştirme, TikTok İçerik Stratejisi, TikTok Keşfet Desteği, 24/7 TikTok Destek, Ücretsiz TikTok Danışmanlık, TikTok Algoritma İpuçları`} />
       </Head>
       <Header menuItems={menuItems} />
       <Container>

@@ -1,5 +1,4 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
+import React from "react";
 import Container from "../container/Container";
 import "./Streamers.scss";
 import { useRouter } from "next/navigation";
@@ -15,40 +14,54 @@ import {
   Keyboard,
   Autoplay,
 } from "swiper/modules";
+import useSWR from "swr";
+
+interface ISocialMediaLink {
+  link: string;
+  iconClass: string;
+}
+
+interface ISocialMedia {
+  [key: string]: ISocialMediaLink;
+}
 
 interface IStreamer {
-  path(path: any): void;
+  path: string;
   name: string;
   title: string;
   backgroundImage: string;
-  socialMedia: {
-    [key: string]: {
-      link: string;
-      iconClass: string;
-    };
-  };
+  socialMedia: ISocialMedia;
 }
 
-const Streamers: React.FC<IStreamersProps> = () => {
-  const [streamers, setStreamers] = useState<IStreamer[]>([]);
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+const Streamers: React.FC = () => {
+  const { data, error } = useSWR(
+    "https://lucky7agency.com.tr/json/streamers.json",
+    fetcher,
+    {
+      onSuccess: (data) => {
+        console.log("Veri başarıyla alındı:", data);
+      },
+    }
+  );
+
+  const streamers: IStreamer[] = data?.streamers ?? [];
 
   const router = useRouter();
 
-  const handleSlideClick = (path: any) => {
-    router.push( `${path}`);
+  const handleSlideClick = (path: string) => {
+    router.push(path);
   };
-  
-  useEffect(() => {
-    const fetchStreamers = async () => {
-      const response = await fetch(
-        "https://lucky7agency.com.tr/json/streamers.json"
-      );
-      const data = await response.json();
-      setStreamers(data.streamers);
-    };
 
-    fetchStreamers();
-  }, []);
+  if (error && !data)
+    return (
+      <div>
+        <div className="spinner">
+          <i className="ri-loader-fill" />
+        </div>
+      </div>
+    );
 
   return (
     <section className="streamers" id="streamers">
@@ -101,37 +114,39 @@ const Streamers: React.FC<IStreamersProps> = () => {
           },
         }}
       >
-        <div className="slider-track">
-          {streamers.map((streamer, index) => (
-            <SwiperSlide key={index}>
-              <div
-                className="slide"
-                style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.00), #140E3C), url(${streamer.backgroundImage})`,
-                }}
-                onClick={() => handleSlideClick(streamer.path)}
-              >
-                <div className="social-media">
-                  <ul>
-                    {Object.entries(streamer.socialMedia).map(
-                      ([platform, { link, iconClass }]) => (
-                        <li key={platform}>
-                          <a href={link} target="_blank">
-                            <i className={iconClass}></i>
-                          </a>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
-                <div className="info">
-                  <h2>{streamer.name}</h2>
-                  <h3>{streamer.title}</h3>
-                </div>
+        {streamers.map((streamer, index) => (
+          <SwiperSlide key={index}>
+            <div
+              className="slide"
+              style={{
+                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.00), #140E3C), url(${streamer.backgroundImage})`,
+              }}
+              onClick={() => handleSlideClick(streamer.path)}
+            >
+              <div className="social-media">
+                <ul>
+                  {Object.entries(streamer.socialMedia).map(
+                    ([platform, { link, iconClass }]) => (
+                      <li key={platform}>
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i className={iconClass}></i>
+                        </a>
+                      </li>
+                    )
+                  )}
+                </ul>
               </div>
-            </SwiperSlide>
-          ))}
-        </div>
+              <div className="info">
+                <h2>{streamer.name}</h2>
+                <h3>{streamer.title}</h3>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -184,4 +199,5 @@ const Streamers: React.FC<IStreamersProps> = () => {
     </section>
   );
 };
+
 export default Streamers;

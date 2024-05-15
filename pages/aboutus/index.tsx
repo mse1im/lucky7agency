@@ -19,9 +19,9 @@ export default function Page() {
         <title>Lucky 7 Agency - Hakkımızda</title>
         <meta
           name="description"
-          content="Hakkımızda"
+          content="Lucky7 Agency, TikTok'ta etkileyici içerik üreticilerini destekleyen bir resmi TikTok partner ajansıdır. Amacımız içerik üreticilerinin potansiyellerini en üst düzeye çıkarmalarına yardımcı olmak ve hedef kitlelerine daha etkili bir şekilde ulaşmalarını sağlamaktır.          "
         />
-        <meta name="keywords" content="Hakkımızda"/>
+        <meta name="keywords" content="TikTok Ajansı, TikTok Yayıncı Destek, TikTok Canlı Yayın Danışmanlığı, Sosyal Medya Ajansı, TikTok Kitle Geliştirme, TikTok İçerik Stratejisi, TikTok Keşfet Desteği, 24/7 TikTok Destek, Ücretsiz TikTok Danışmanlık, TikTok Algoritma İpuçları"/>
       </Head>
       <Header menuItems={menuItems} />
       <AboutUs />

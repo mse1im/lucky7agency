@@ -19,8 +19,8 @@ export default function Page() {
     <>
       <Head>
         <title>Lucky 7 Agency - Hizmetlerimiz</title>
-        <meta name="description" content="Hizmetlerimiz" />
-        <meta name="keywords" content="Hizmetlerimiz" />
+        <meta name="description" content="TikTok Keşfet Desteği hizmetinin içerisinde, yayıncılarımıza keşfette daha büyük kitlelere ulaşabilmeleri için püf noktalar ve bilgiler iletiyoruz. Bu bilgileri öğrenip, TikTok algoritmasının kurallarına uyarak içerik ürettiklerinde keşfetten çok yüksek etkileşimlere erişebiliyorlar." />
+        <meta name="keywords" content="TikTok Ajansı, TikTok Yayıncı Destek, TikTok Canlı Yayın Danışmanlığı, Sosyal Medya Ajansı, TikTok Kitle Geliştirme, TikTok İçerik Stratejisi, TikTok Keşfet Desteği, 24/7 TikTok Destek, Ücretsiz TikTok Danışmanlık, TikTok Algoritma İpuçları" />
       </Head>
       <Header menuItems={menuItems} />
       <Services />

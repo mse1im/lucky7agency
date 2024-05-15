@@ -18,4 +18,6 @@ RewriteRule ^ index.html [L]
 
 <IfModule mod_headers.c>
 Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET,PUT,POST,DELETE"
+Header set Access-Control-Allow-Headers "Content-Type, Authorization"
 </IfModule>
